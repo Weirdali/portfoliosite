@@ -1,0 +1,40 @@
+.contactMain {
+    font-family: 'Quicksand';
+}
+
+.contact {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.contactForm {
+    width: 100%;
+
+    padding: 0;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contactInput {
+    width: 100%;
+    margin-top: 1px;
+    padding: 0;
+     -webkit-box-sizing: border-box;
+    -moz-boz-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.contactTextArea {
+    margin-top: 3px;
+}
+
+textarea {
+    height: 70px;
+    width: 452px;
+
+    padding: 0;
+    margin: 0;
+    margin-top: 7px;
+}
