@@ -1,5 +1,32 @@
 .contactMain {
-    font-family: 'Quicksand';
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.contactWrapper {
+    color: #FF342F;
+    background-color: #67AFD2;
+    height: 400px;
+    width: 35%;
+    margin: auto;
+
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -75%);
+
+    
+     -webkit-animation: moveinfullfromleft 1.3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: moveinfullfromleft 1.3s; /* Firefox < 16 */
+    -ms-animation: moveinfullfromleft 1.3s; /* Internet Explorer */
+    -o-animation: moveinfullfromleft 1.3s; /* Opera < 12.1 */
+    animation: moveinfullfromleft 1.3s;)
+}
+
+.contactWrapper {
+    
 }
 
 .contact {
