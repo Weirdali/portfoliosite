@@ -2,12 +2,6 @@
  * Created by Alice Gee on 17/02/15.
  */
 
-
-
-
-
- 
-
 /*----JavaScript page stuff-----*/
 function func(){ alert("Welcome! This is my JavaScript practice page."); }
 
