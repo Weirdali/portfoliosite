@@ -1,6 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
 @import url("nav.css");
 @import url("contact.css");
+@import url("cloud.css");
+@import url("animations.css");
 
 @font-face {
     font-family: 'Quicksand', sans-serif;
@@ -22,15 +24,11 @@ body {
     overflow-x: hidden;
     -ms-overflow-x: hidden;
     font-family: 'Quicksand';
+    position: relative;
+    z-index: -2;
 }
-
 
 /*---------------------Banner 1------------------------*/
-.homeMain {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
 
 .homeBanner, .portfolioBanner {
     color: #FF342F;
@@ -45,12 +43,17 @@ body {
     transform: translateY(-75%);
 }
 
-.homeBanner {
+.homeBannerOnLoad {
     -webkit-animation: moveinfullfromleft 1.3s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: moveinfullfromleft 1.3s; /* Firefox < 16 */
     -ms-animation: moveinfullfromleft 1.3s; /* Internet Explorer */
     -o-animation: moveinfullfromleft 1.3s; /* Opera < 12.1 */
     animation: moveinfullfromleft 1.3s;
+}
+
+.homeBanner:not(.homeBannerOnLoad) {
+    left: 0%;
+    transition: left 700ms ease-in-out;
 }
 
 .homeBannerCenter, .portfolioBannerCenter {
@@ -106,7 +109,6 @@ body {
     animation: moveinhalf 1s;
 }
 
-
 .links {
     margin: 10px;
 }
@@ -117,7 +119,7 @@ body {
 }
 
 
-/*---------------Banner 2 -------------*/
+/*-------------- Banner 2 -------------*/
 
 /*
 .portfolioBanner {
@@ -134,6 +136,8 @@ body {
 .portfolioBanner {
     left: 100%;
     display: inline-block;
+
+    transition: all 700ms ease-in-out;
 }
 
 .portfolioBannerCenter {
@@ -247,100 +251,4 @@ main {
         width: 350px;
         height: 150px;
     }
-}
-
-
-
-
-/*------------------Animations-----------------*/
-
-
-@keyframes moveinhalf  {
-    0% { right: 100%;  }
-    100% { right: 50%; }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes moveinhalf  {
-    from { right: 100%; }
-    to   { right: 50%; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes moveinhalf {
-    from { right: 100%; }
-    to   { right: 50%; }
-}
-
-/* Internet Explorer */
-@-ms-keyframes moveinhalf {
-    from { right: 100%; }
-    to   { right: 50%; }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes moveinhalf {
-    from { right: 100%; }
-    to   { right: 50%; }
-}
-
-
-@keyframes moveinfullfromleft {
-    0% { right: 100%;  }
-    100% { right: 0px; }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes moveinfullfromleft {
-    from { right: 100%; }
-    to   { right: 0px; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes moveinfullfromleft {
-    from { right: 100%; }
-    to   { right: 0px; }
-}
-
-/* Internet Explorer */
-@-ms-keyframes moveinfullfromleft {
-    from { right: 100%; }
-    to   { right: 0px; }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes moveinfullfromleft {
-    from { right: 100%; }
-    to   { right: 0px; }
-}
-
-
-
-@keyframes moveinfullfromright {
-    0% { left: 100%;  }
-    100% { left: 0px; }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes moveinfullfromright {
-    from { left: 100%; }
-    to   { left: 0px; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes moveinfullfromright {
-    from { left: 100%; }
-    to   { left: 0px; }
-}
-
-/* Internet Explorer */
-@-ms-keyframes moveinfullfromright {
-    from { left: 100%; }
-    to   { left: 0px; }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes moveinfullfromright {
-    from { left: 100%; }
-    to   { left: 0px; }
 }

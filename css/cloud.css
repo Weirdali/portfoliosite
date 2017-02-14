@@ -1,0 +1,64 @@
+.cloud {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    /*top: 25%;
+    left: 25%;*/
+    z-index: -10000000;
+}
+
+.cloudBase {
+    border-radius: 50%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 19px;
+    left: 25px;
+}
+
+.cloudPart1 {
+    border-radius: 50%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    left: 8px;
+}
+
+.cloudPart2 {
+    border-radius: 50%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 17px;
+}
+
+.cloudPart3 {
+    border-radius: 50%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 26px;
+    top: 0px;
+
+}
+
+.cloudPart4 {
+    border-radius: 50%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 41px;
+    top: 15px;
+}
+
+.cloudBase:hover, div[class^="cloudPart"]:hover {
+    width: 45px;
+    height: 45px;
+}
