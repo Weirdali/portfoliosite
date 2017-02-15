@@ -3,6 +3,7 @@
 @import url("contact.css");
 @import url("cloud.css");
 @import url("animations.css");
+@import url("portfolio.css");
 
 @font-face {
     font-family: 'Quicksand', sans-serif;
@@ -21,16 +22,16 @@ body {
     height: 100%;
     width: 100%;
     background-color: #98CDE7;
-    overflow-x: hidden;
-    -ms-overflow-x: hidden;
     font-family: 'Quicksand';
     position: relative;
     z-index: -2;
+    /*overflow-x: hidden;
+    -ms-overflow-x: hidden;*/
 }
 
 /*---------------------Banner 1------------------------*/
 
-.homeBanner, .portfolioBanner {
+.homeBanner, .portfolioBanner, .contactBanner {
     color: #FF342F;
     background-color: #67AFD2;
 
@@ -93,6 +94,8 @@ body {
 
 }
 
+/*------------- Links Banner ------------*/
+
 .linksBanner {
     position: absolute;
     top: 75%;
@@ -118,20 +121,7 @@ body {
     text-decoration: none;
 }
 
-
 /*-------------- Banner 2 -------------*/
-
-/*
-.portfolioBanner {
-    padding-bottom: 100px;
-    transform: translateY(-75%);
-
-    -webkit-animation: moveinfullfromright 1.3s; /* Safari, Chrome and Opera > 12.1
-       -moz-animation: moveinfullfromright 1.3s; /* Firefox < 16
-        -ms-animation: moveinfullfromright 1.3s; /* Internet Explorer
-         -o-animation: moveinfullfromright 1.3s; /* Opera < 12.1
-            animation: moveinfullfromright 1.3s;
-}*/
 
 .portfolioBanner {
     left: 100%;
@@ -176,7 +166,23 @@ body {
 
 }
 
-/*------------------Portfolio page-----------------*/
+
+
+
+
+/*
+.portfolioBanner {
+    padding-bottom: 100px;
+    transform: translateY(-75%);
+
+    -webkit-animation: moveinfullfromright 1.3s; /* Safari, Chrome and Opera > 12.1
+       -moz-animation: moveinfullfromright 1.3s; /* Firefox < 16
+        -ms-animation: moveinfullfromright 1.3s; /* Internet Explorer
+         -o-animation: moveinfullfromright 1.3s; /* Opera < 12.1
+            animation: moveinfullfromright 1.3s;
+}*/
+
+/*------------------NOT IN USE YET----------------*/
 
 main {
     width: 100%;

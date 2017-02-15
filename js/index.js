@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     /*note: Credit this guy => http://jsfiddle.net/fZtdt/498/ */
     
     var min_x = 0;
-    var max_x = window.innerWidth;
+    var max_x = window.innerWidth
     var min_y = 0;
     var max_y = window.innerHeight;
     var filled_areas = new Array();
@@ -55,31 +55,81 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return false;
     }
 
-    /*------ animations ---------*/
-
+    /*------------- Home Banner -------------*/
+    
     document.getElementById("workBtn").addEventListener("click", function(e) {
         e.preventDefault();
-
         var homeBanner = document.getElementById("homeBanner");
         homeBanner.classList.remove("homeBannerOnLoad");
-
         setTimeout(function() {
             homeBanner.style.left="-100%";
-        }, 10);
-
-        setTimeout(function() {
-            document.getElementById("portfolioBanner").style.left="-0%";
         }, 100);
-
+        homeBanner.style.left="-200%";
+        setTimeout(function() {
+            document.getElementById("portfolioBanner").style.left="0%";
+        }, 100);
+        setTimeout(function() {
+            document.getElementById("contactBanner").style.left="100%";
+        }, 100);
+        document.getElementById("contactHomeBtn").setAttribute("id", "contactWorkBtn");
         /*
          setTimeout(function() {
          window.location=$('#btn').attr("href");
          }, 500);*/
     });
-    
+
+    document.getElementById("contactHomeBtn").addEventListener("click", function(e) {
+        e.preventDefault();
+        var homeBanner = document.getElementById("homeBanner");
+        homeBanner.classList.remove("homeBannerOnLoad");
+        setTimeout(function() {
+            homeBanner.style.left="-200%";
+        }, 100);
+        setTimeout(function() {
+            portfolioBanner.style.left="-200%";
+        }, 100);
+        setTimeout(function() {
+            document.getElementById("contactBanner").style.left="0%";
+        }, 100);
+        document.getElementById("contactHomeBtn").setAttribute("id", "contactContactBtn");
+    });
+
+    /*---------Work Banner----------*/
+
     document.getElementById("artBtn").addEventListener("click", function(e) {
-        event.preventDefault();
-        document.getElementById("portfolioBanner").style.left="-100%";
+        e.preventDefault();
+        console.log("art");
+        document.getElementById("portfolioBanner").style.top="-100%";
+        document.getElementById("homeBanner").style.top="-100%";
+        document.getElementById("contactBanner").style.top="-100%";
+        document.getElementById("artCloudWrapper").style.display="block";
+        document.getElementById("contactHomeBtn").setAttribute("id", "contactWorkBtn");
+        setTimeout(function() {
+            document.getElementById("balloon").style.top="25%";
+        }, 100);
+    });
+
+    document.getElementById("designBtn").addEventListener("click", function(e) {
+        e.preventDefault();
+        console.log("art");
+        document.getElementById("portfolioBanner").style.top="-100%";
+        document.getElementById("homeBanner").style.top="-100%";
+        document.getElementById("contactBanner").style.top="-100%";
+        document.getElementById("designCloudWrapper").style.display="block";
+        setTimeout(function() {
+            document.getElementById("balloon").style.top="25%";
+        }, 100);
+    });
+
+    document.getElementById("contactWorkBtn").addEventListener("click", function(e) {
+        e.preventDefault();
+        setTimeout(function() {
+            document.getElementById("portfolioBanner").style.left="-100%";
+        }, 100)
+        setTimeout(function() {
+            document.getElementById("contactBanner").style.left="0%";
+        }, 100);
+        document.getElementById("contactHomeBtn").setAttribute("id", "contactWorkBtn");
     });
 
     /*
@@ -90,18 +140,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }, 700);
     });*/
 
-    document.getElementById("designBtn").addEventListener("click", function(e) {
-        event.preventDefault(); 
-        document.getElementById("portfolioBanner").style.left="-100%";
-    });
+    /*----------- Art/Design -------------*/
 
-    document.getElementById("workBtn").addEventListener("click", function(e) {
-        e.preventDefault();
+    document.getElementById("contactWorkBtn").addEventListener("click", function(e) {
 
-        setTimeout(function() {
-            document.getElementById("portfolioBanner").style.left="-100%";
-        }, 10);
 
-    });
     
 });
