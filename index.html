@@ -2,41 +2,54 @@
 <html>
 <head>
     <script src="js/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="js/index.js"> </script>
     <link rel="stylesheet" type="text/css" href="css/index.css?request" title="home"/>
     <title>Alice Gee</title>
 </head>
 <body>
-    <section class="homeBanner homeBannerOnLoad" id="homeBanner">
-        <div class="homeBannerCenter">
-            <h1 class="name">Alice</h1>
-            <p class="intro">23. Computer Science student. Aspiring web designer.</p>
-            <p class="seeWork"><a href="#" class="btnStart" id="workBtn">See my work</a></p>
-        </div>
-    </section>
+    <div class="container" id="container">
+        <div class="rail" id="rail">
+            <section class="homeBanner homeBannerOnLoad slide" id="homeBanner">
+                <div class="homeBannerCenter">
+                    <h1 class="name">Alice</h1>
+                    <p class="intro">23. Computer Science student. Aspiring web designer.</p>
+                    <p class="seeWork"><a href="#" class="btnStart seeWorkBtn" id="seeWorkBtn">See my work</a></p>
+                </div>
+            </section>
 
-    <section class="portfolioBanner" id="portfolioBanner">
-        <div class="portfolioBannerCenter">
-            <div class="artBlock">
-                <a href="#" class="portfolioBtn" id="artBtn"><p class="art">Art</p></a>
-            </div>
-            <div class="designBlock">
-                <a href="#" class="portfolioBtn" id="designBtn"><p class="design">Design</p></a>
-            </div>
-        </div>
-    </section>
+            <section class="portfolioBanner slide" id="portfolioBanner">
+                <div class="portfolioBannerCenter">
+                    <div class="artBlock">
+                        <a href="#" class="portfolioBtn artBtn" id="artBtn"><p class="art">Art</p></a>
+                    </div>
+                    <div class="designBlock">
+                        <a href="#" class="portfolioBtn designBtn" id="designBtn"><p class="design">Design</p></a>
+                    </div>
+                </div>
+            </section>
 
-    <section class="contactBanner" id="contactBanner">
-        <div class="contactCenter" id="contactCenter">
-            <div class="contactContent">
-                <h1 class="contactTitle">Contact me</h1>
-                <form class="contactInput" name="contact" method="post" action="contact.php">
-                    <input class="contactInput" id="name" name="name" class="form" type="text" placeholder="Name"/>
-                    <input class="contactInput" name="email" class="form" type="text" placeholder="Email"/>
-                    <textarea class="contactInput contactTextArea" name="message" cols="50" rows="5" value="message" placeholder="Message"></textarea>
-                    <input class="contactButton" type="submit" id="submit" name="submit" value="send"/>
-                </form>
-            </div>  
+            <section class="contactBanner slide" id="contactBanner">
+                <div class="contactCenter" id="contactCenter">
+                    <div class="contactContent">
+                        <h1 class="contactTitle">Contact me</h1>
+                        <form class="contactInput" name="contact" method="post" action="contact.php">
+                            <input class="contactInput" id="name" name="name" class="form" type="text" placeholder="Name"/>
+                            <input class="contactInput" name="email" class="form" type="text" placeholder="Email"/>
+                            <textarea class="contactInput contactTextArea" name="message" cols="50" rows="5" value="message" placeholder="Message"></textarea>
+                            <input class="contactButton" type="submit" id="submit" name="submit" value="send"/>
+                        </form>
+                    </div>  
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <section class="linksBanner">
+        <div class="links">
+            <a href="#/home" class="homeHomeBtn" id="homeBtn">home</a>
+            <a href="#/work" class="workHomeBtn" id="workBtn">work</a>
+            <a href="#">linkedin</a> 
+            <a href="#">twitter</a>
+            <a href="#" class="contactHomeBtn" id="contactBtn">contact</a>
         </div>
     </section>
 
@@ -77,12 +90,16 @@
 
     <section class="linksBanner">
         <div class="links">
-            <a href="#" class="homeBtn" id="homeHomeBtn">home</a>
-            <a href="#" class="workBtn" id="workHomeBtn">work</a>
+            <a href="#" class="homeHomeBtn" id="homeBtn">home</a>
+            <a href="#" class="workHomeBtn" id="workBtn">work</a>
             <a href="#">linkedin</a> 
             <a href="#">twitter</a>
-            <a href="#" class="contactBtn" id="contactHomeBtn">contact</a>
+            <a href="#" class="contactHomeBtn" id="contactBtn">contact</a>
         </div>
     </section>
+
+
+    <script type="text/javascript" src="js/index.js"> </script>
+
 </body>
 </html>
