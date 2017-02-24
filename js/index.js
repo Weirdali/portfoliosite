@@ -34,7 +34,8 @@ Carousel = (function() {
 })();
 
 init = function (event) {
-    var clouds;
+    var clouds,
+        hashPath = location.hash.substr(2);
 
     clouds = generateClouds();
     positionClouds(clouds);
@@ -43,12 +44,28 @@ init = function (event) {
     mainCarousel.resizeSlides();
     //bind makes sure that the value of 'this' is mainCarousel
     window.addEventListener('resize', mainCarousel.resizeSlides.bind(mainCarousel), false);
+    
+    routes = {
+        'home': mainCarousel.moveTo.bind(mainCarousel, 0),
+        'work': mainCarousel.moveTo.bind(mainCarousel, 1),
+        'contact': mainCarousel.moveTo.bind(mainCarousel, 2)
+    };
 
-    document.getElementById("homeBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 0));
-    document.getElementById("seeWorkBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 1));
-    document.getElementById("workBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 1));
-    document.getElementById("contactBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 2));
+    if (typeof routes[hashPath] === 'function') {
+        routes[hashPath]();
+    } 
 };
+
+//This is a hash value which happens to be a path. The / means it doesn't jump to IDs
+window.addEventListener("hashchange", function () {
+    //substr[2] cuts off the first 2 characters, which are #/
+    var hashPath = location.hash.substr(2);
+    
+    //checking the type so th
+    if (typeof routes[hashPath] === 'function') {
+        routes[hashPath]();
+    } 
+}, false);
 
 document.addEventListener("DOMContentLoaded", init); 
 
@@ -92,7 +109,6 @@ positionClouds = function (clouds) {
         clouds[i].style.top=rand_y + "px";
     }
 };
-
 
 /*------Art & Design/Dev-------*/
 
