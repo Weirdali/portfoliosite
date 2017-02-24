@@ -1,11 +1,53 @@
-var init, generateClouds, positionClouds, positionSlides;
+var init, generateClouds, positionClouds, showPortfolio, Carousel, mainCarousel, 
+    routes;
 
+// A class definition for a generic carousel
+Carousel = (function() {
+    Carousel.prototype.container = null;
+    Carousel.prototype.rail = null;
+    Carousel.prototype.slides = null;
+    
+    //Constructor - takes the container, which is a means to find the moving parts of the carousel which are directly inside it
+    function Carousel(container) {
+        this.container = container;
+        this.rail = container.getElementsByClassName('rail')[0];
+        this.slides = this.rail.getElementsByClassName('slide');
+    }
+    
+    //Add methods to the class
+    Carousel.prototype.resizeSlides = function () {
+        var i, 
+            slides = this.slides;
+
+        for(i = 0; i < slides.length; i++) {
+            slides[i].style.width = container.offsetWidth + 'px';
+        } 
+    };
+
+    Carousel.prototype.moveTo = function (index) {
+        var targetSlide = this.slides[index],
+            amountToMove = targetSlide.offsetLeft;
+        this.rail.style.left = "-" + amountToMove + "px";
+    };
+
+    return Carousel;
+})();
 
 init = function (event) {
     var clouds;
 
     clouds = generateClouds();
     positionClouds(clouds);
+
+    mainCarousel = new Carousel(document.getElementById('container'));
+    mainCarousel.resizeSlides();
+    //bind makes sure that the value of 'this' is mainCarousel
+    window.addEventListener('resize', mainCarousel.resizeSlides.bind(mainCarousel), false);
+
+    document.getElementById("homeBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 0));
+    document.getElementById("seeWorkBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 1));
+    document.getElementById("workBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 1));
+    document.getElementById("contactBtn").addEventListener("click", mainCarousel.moveTo.bind(mainCarousel, 2));
 };
 
 document.addEventListener("DOMContentLoaded", init); 
@@ -13,7 +55,9 @@ document.addEventListener("DOMContentLoaded", init);
 /* note: Credit this guy => http://jsfiddle.net/fZtdt/498/ */
 
 generateClouds = function () {
-    var i, cloud, clouds = new Array(20);
+    var i, 
+        cloud, 
+        clouds = new Array(20);
 
     for (i = 0; i < 20; i++) {
         cloud = document.createElement("div");
@@ -23,7 +67,7 @@ generateClouds = function () {
         clouds[i] = cloud;
     }
     return clouds;
-}
+};
 
 positionClouds = function (clouds) {
     var min_x, max_x, min_y, max_y, filled_areas=[], i, rand_x, rand_y, area;
@@ -46,258 +90,38 @@ positionClouds = function (clouds) {
         
         clouds[i].style.left=rand_x + "px"; 
         clouds[i].style.top=rand_y + "px";
-    };
+    }
+};
+
+
+/*------Art & Design/Dev-------*/
+
+showPortfolio = function (cloudWrapper) {
+    document.getElementById("rail").style.top="-100%"
+    document.getElementById(cloudWrapper).style.display="block";
+
+    if(cloudWrapper === "artCloudWrapper") {
+        document.getElementById("homeBtn").setAttribute("class", "homeArtBtn");
+        document.getElementById("workBtn").setAttribute("class", "workArtBtn");
+        document.getElementById("contactBtn").setAttribute("class", "contactArtBtn");
+    }
+    else if(cloudWrapper === "designCloudWrapper") {
+        document.getElementById("homeBtn").setAttribute("class", "homeDesDevBtn");
+        document.getElementById("workBtn").setAttribute("class", "workDesDevBtn");
+        document.getElementById("contactBtn").setAttribute("class", "contactDesDevBtn");
+    }
+    
+    setTimeout(function() {
+        document.getElementById("balloon").style.top="25%";
+    }, 100);
 }
 
+document.getElementById("artBtn").addEventListener("click", function(e) {
+    e.preventDefault();
+    showPortfolio("artCloudWrapper");
+});
 
-/*------------- Home Banner -------------*/  
-
-
-    /*-----See Work Button-----*/
-
-    document.getElementById("seeWorkBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        var homeBanner = document.getElementById("homeBanner");
-        homeBanner.classList.remove("homeBannerOnLoad");
-        setTimeout(function() {
-            homeBanner.style.left="-100%";
-        }, 10);
-        setTimeout(function() {
-            document.getElementById("portfolioBanner").style.left="0%";
-        }, 100);
-        setTimeout(function() {
-            document.getElementById("contactBanner").style.left="100%";
-        }, 100);
-
-        document.getElementById("homeBtn").setAttribute("class", "homeWorkBtn");
-        document.getElementById("workBtn").setAttribute("class", "workWorkBtn");
-        document.getElementById("contactBtn").setAttribute("class", "contactWorkBtn");
-    });
-
-
-    /*-------Home Button-------*/
-
-
-    /*
-    Create array
-    Each position in the array should reference the outermost bit of slide
-
-    */
-
-    document.getElementById("homeBtn").addEventListener("click", function(e) {
-        if(e.target.classList.contains("homeHomeBtn")) {
-            e.preventDefault();
-        }
-        else if(e.target.classList.contains("homeWorkBtn")) {
-            e.preventDefault();
-            
-            setTimeout(function() {
-                document.getElementById("contactBanner").style.left="200%";
-            }, 10);
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.left="100%";
-            }, 50);
-            setTimeout(function() {
-                document.getElementById("homeBanner").style.left="0%";
-            }, 100);
-    
-            document.getElementById("homeBtn").setAttribute("class", "homeHomeBtn");
-            document.getElementById("workBtn").setAttribute("class", "workHomeBtn");
-            document.getElementById("contactBtn").setAttribute("clas", "contactHomeBtn");
-        }
-        else if(e.target.classList.contains("homeContactBtn")) {
-            e.preventDefault();
-
-            setTimeout(function() {
-                document.getElementById("contactBanner").style.left="200%";
-            }, 10);
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.left="100%";
-            }, 50);
-            setTimeout(function() {
-                document.getElementById("homeBanner").style.left="0%";
-            }, 100);          
-
-            document.getElementById("homeBtn").setAttribute("class", "homeHomeBtn");
-            document.getElementById("workBtn").setAttribute("class", "workHomeBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactHomeBtn");
-        }
-
-        else if(e.target.classList.contains("homeArtBtn")) {
-            e.preventDefault();
-
-            document.getElementById("contactBanner").style.left="200%";
-            document.getElementById("portfolioBanner").style.left="100%";
-            document.getElementById("homeBanner").style.left="0%";
-            
-            setTimeout(function() {
-                document.getElementById("artCloudWrapper").style.opacity="0";
-                document.getElementById("artCloudWrapper").style.display="none";
-            }, 50);
-
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.top="12%";
-                document.getElementById("homeBanner").style.top="12%";
-                document.getElementById("contactBanner").style.top="12%";
-            }, 100); 
-        }
-
-        else if(e.target.classList.contains("homeDesDevBtn")) {
-
-        }
-    });
-
-
-    /*-------Work Button-------*/
-
-    document.getElementById("workBtn").addEventListener("click", function(e) {
-        if(e.target.classList.contains("workHomeBtn")) {
-            e.preventDefault();
-            
-            var homeBanner = document.getElementById("homeBanner");
-            homeBanner.classList.remove("homeBannerOnLoad");
-            
-            setTimeout(function() {
-                homeBanner.style.left="-100%";
-            }, 10);
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.left="0%";
-            }, 100);
-            setTimeout(function() {
-                document.getElementById("contactBanner").style.left="100%";
-            }, 100);
-
-            document.getElementById("homeBtn").setAttribute("class", "homeWorkBtn");
-            document.getElementById("workBtn").setAttribute("class", "workWorkBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactWorkBtn");
-        }
-        else if(e.target.classList.contains("workWorkBtn")) {
-            e.preventDefault();
-        }
-        else if(e.target.classList.contains("workContactBtn")) {
-            e.preventDefault();
-
-            document.getElementById("homeBanner").style.left="-100%";
-            setTimeout(function() {
-                document.getElementById("contactBanner").style.left="100%";
-            }, 10);  
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.left="0%";
-            }, 100);
-            
-            /*setTimeout(function() {
-                document.getElementById("homeBanner").style.left="-100%";
-            }, 100);*/
-
-            document.getElementById("homeBtn").setAttribute("class", "homeWorkBtn");
-            document.getElementById("workBtn").setAttribute("class", "workWorkBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactWorkBtn");
-        }
-        else if(e.target.classList.contains("workArtBtn")) {
-            e.preventDefault();
-
-            
-            setTimeout(function() {
-                document.getElementById("artCloudWrapper").style.display="none";
-            }, 50);
-
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.top="12%";
-                document.getElementById("homeBanner").style.top="12%";
-                document.getElementById("contactBanner").style.top="12%";
-            }, 100); 
-        }
-        else if(e.target.classList.contains("workDesDevBtn")) {
-            e.preventDefault();
-
-        }
-    });
-
-
-    /*-------Contact Button-------*/
-
-    document.getElementById("contactBtn").addEventListener("click", function(e) {
-        if(e.target.classList.contains("contactHomeBtn")) {
-            e.preventDefault();
-
-            var homeBanner = document.getElementById("homeBanner");
-            homeBanner.classList.remove("homeBannerOnLoad");
-
-            setTimeout(function() {
-                homeBanner.style.left="-200%";
-            }, 10);
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.left="-100%";
-            }, 50);
-            setTimeout(function() {
-                document.getElementById("contactBanner").style.left="0%";
-            }, 100);
-
-            document.getElementById("homeBtn").setAttribute("class", "homeContactBtn");
-            document.getElementById("workBtn").setAttribute("class", "workContactBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactContactBtn");
-        }
-        else if(e.target.classList.contains("contactWorkBtn")) {
-            e.preventDefault();
-
-            document.getElementById("homeBanner").style.left="-200%";
-
-            setTimeout(function() {
-                document.getElementById("portfolioBanner").style.left="-100%";
-            }, 10)
-            setTimeout(function() {
-                document.getElementById("contactBanner").style.left="0%";
-            }, 100);
-
-            document.getElementById("homeBtn").setAttribute("class", "homeContactBtn");
-            document.getElementById("workBtn").setAttribute("class", "workContactBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactContactBtn");
-        }
-        else if(e.target.classList.contains("contactContactBtn")) {
-            e.preventDefault();
-        }
-        else if(e.target.classList.contains("contactArtBtn")) {
-            e.preventDefault();
-        }
-        else if(e.target.classList.contains("contactDesDevBtn")) {
-            e.preventDefault();
-        }
-    });
-
-    /*------Art & Design/Dev-------*/
-
-    function showPortfolio(cloudWrapper){
-    
-        document.getElementById("portfolioBanner").style.top="-100%";
-        document.getElementById("homeBanner").style.top="-100%";
-        document.getElementById("contactBanner").style.top="-100%";
-        document.getElementById(cloudWrapper).style.display="block";
-
-        if(cloudWrapper == "artCloudWrapper") {
-            document.getElementById("homeBtn").setAttribute("class", "homeArtBtn");
-            document.getElementById("workBtn").setAttribute("class", "workArtBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactArtBtn");
-        }
-        else if(cloudWrapper == "designCloudWrapper") {
-            document.getElementById("homeBtn").setAttribute("class", "homeDesDevBtn");
-            document.getElementById("workBtn").setAttribute("class", "workDesDevBtn");
-            document.getElementById("contactBtn").setAttribute("class", "contactDesDevBtn");
-        }
-        
-        setTimeout(function() {
-            document.getElementById("balloon").style.top="25%";
-        }, 100);
-    }
-
-    document.getElementById("artBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        showPortfolio("artCloudWrapper");
-    });
-
-    document.getElementById("designBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        showPortfolio("designCloudWrapper");
-    });
-
-
-    /*----------Contact------------*/
+document.getElementById("designBtn").addEventListener("click", function(e) {
+    e.preventDefault();
+    showPortfolio("designCloudWrapper");
+});
