@@ -1,5 +1,13 @@
-var init, generateClouds, positionClouds, showPortfolio, Carousel, mainCarousel, 
-    routes;
+var init,    
+    Carousel, 
+    generateClouds, 
+    generateGrid,
+    images = [],
+    mainCarousel, 
+    positionClouds, 
+    routes,
+    showArt, 
+    showDesign;
 
 // A class definition for a generic carousel
 Carousel = (function() {
@@ -48,12 +56,23 @@ init = function (event) {
     routes = {
         'home': mainCarousel.moveTo.bind(mainCarousel, 0),
         'work': mainCarousel.moveTo.bind(mainCarousel, 1),
-        'contact': mainCarousel.moveTo.bind(mainCarousel, 2)
+        'contact': mainCarousel.moveTo.bind(mainCarousel, 2),
+        'art': showArt,
+        'design': showDesign
     };
 
     if (typeof routes[hashPath] === 'function') {
         routes[hashPath]();
     } 
+
+    images[0] = "/alicegee/img/me.jpg";
+    images[1] = "/alicegee/img/me.jpg";
+    images[2] = "/alicegee/img/me.jpg";
+    images[3] = "/alicegee/img/me.jpg";
+    images[4] = "/alicegee/img/me.jpg";
+    images[5] = "/alicegee/img/me.jpg";
+
+    generateGrid();    
 };
 
 //This is a hash value which happens to be a path. The / means it doesn't jump to IDs
@@ -112,32 +131,33 @@ positionClouds = function (clouds) {
 
 /*------Art & Design/Dev-------*/
 
-showPortfolio = function (cloudWrapper) {
-    document.getElementById("rail").style.top="-100%"
-    document.getElementById(cloudWrapper).style.display="block";
-
-    if(cloudWrapper === "artCloudWrapper") {
-        document.getElementById("homeBtn").setAttribute("class", "homeArtBtn");
-        document.getElementById("workBtn").setAttribute("class", "workArtBtn");
-        document.getElementById("contactBtn").setAttribute("class", "contactArtBtn");
-    }
-    else if(cloudWrapper === "designCloudWrapper") {
-        document.getElementById("homeBtn").setAttribute("class", "homeDesDevBtn");
-        document.getElementById("workBtn").setAttribute("class", "workDesDevBtn");
-        document.getElementById("contactBtn").setAttribute("class", "contactDesDevBtn");
-    }
-    
-    setTimeout(function() {
-        document.getElementById("balloon").style.top="25%";
-    }, 100);
+showArt = function() {
+    document.getElementById("rail").style.top="-100%";
+    document.getElementById("linksBanner").style.top="0%";
+    document.getElementById("linksBanner").style.width="100%";
+    document.getElementById("artGridWrapper").style.display="block";
+    document.getElementById("artGridWrapper").style.top="20%";
 }
 
-document.getElementById("artBtn").addEventListener("click", function(e) {
-    e.preventDefault();
-    showPortfolio("artCloudWrapper");
-});
+showDesign = function() {
+    document.getElementById("rail").style.top="-100%";
+    document.getElementById("linksBanner").style.top="0%";
+    document.getElementById("linksBanner").style.width="100%";
+    document.getElementById("designGridWrapper").style.display="block";
+}
 
-document.getElementById("designBtn").addEventListener("click", function(e) {
-    e.preventDefault();
-    showPortfolio("designCloudWrapper");
-});
+generateGrid = function() {
+    var i, 
+        artBlock,
+        imageSrc;
+    
+    for (i = 0; i < images.length; i++) {
+        imageSrc = images[i]
+        block = document.createElement("div");
+        block.classList.add("artBlock");
+        block.innerHTML = '<div class="artImage"><img src="' + imageSrc + '"></img></div>';
+        document.getElementById("artGridCenter").appendChild(block);
+    }
+}
+
+

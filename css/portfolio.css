@@ -1,13 +1,8 @@
-.artCloudWrapper, .designCloudWrapper {
+.artGridWrapper, .designGridWrapper {
     display: none;
-
-    width: 100%;
-    height: 400px;
-    margin: auto;
+    
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -75%);
+    top: 15%;
 
     -webkit-animation-name: moveUp;
     animation-name: moveUp;
@@ -20,11 +15,12 @@
     transition: all 700ms ease-in-out;
 }
 
-.artCloudCenter, .designCloudCenter {
+.artGridCenter, .designGridCenter {
     color: #FF342F;
-    background-color: #67AFD2;
+    text-align: center;
+    padding-left: 6%;
+    padding-right: 6%;
 
-    width: 100%;
     height: 100%;
     
     -webkit-animation-name: fadeIn;
@@ -35,90 +31,46 @@
     animation-fill-mode: both;
 }
 
+.artBlock {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.artImage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.artBlock img {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
 .balloon {
     display: none;
 }
 
+@media screen and (min-width: 500px) {
+    .artBlock {
+        width: 45%;
+        padding: 9px;
+    }
+
+}
 
 @media screen and (min-width: 773px) {
-    .artCloudWrapper, .designCloudWrapper {
-        width: 710px;
-        height: 469px;
-        transform: translate(-50%, -60%);
+    .artBlock {
+        width: 25%;
+        padding: 13px;
     }
 
-    .artCloudCenter, .designCloudCenter {
-        background-color: transparent;
-    }
+    .artImage {
 
-    .bigCloudPart1 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 61px;
-        left: 0px;
-    }
-
-    .bigCloudPart2 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 146px;
-        left: 29px;
-    }
-
-    .bigCloudPart3 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        left: 252px;
-        top: 0px;
-    }
-
-    .bigCloudPart4 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        left: 88px;
-        top: 19px;
-    }
-
-    .bigCloudPart5 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 169px;
-        left: 198px;
-    }
-
-    .bigCloudPart6 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 46px;
-        left: 410px;
-    }
-
-    .bigCloudPart7 {
-        border-radius: 50%;
-        background-color: #67AFD2;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        top: 152px;
-        left: 384px;
     }
 }
 
@@ -152,7 +104,6 @@
 
     .balloonBasket {
         position: absolute;
-
         width: 50%;
         height: 20px;
         background-color: brown;

@@ -8,7 +8,7 @@
 <body>
     <div class="container" id="container">
         <div class="rail" id="rail">
-            <section class="homeBanner homeBannerOnLoad slide" id="homeBanner">
+            <section class="homeBanner slide" id="homeBanner">
                 <div class="homeBannerCenter">
                     <h1 class="name">Alice</h1>
                     <p class="intro">23. Computer Science student. Aspiring web designer.</p>
@@ -18,11 +18,11 @@
 
             <section class="portfolioBanner slide" id="portfolioBanner">
                 <div class="portfolioBannerCenter">
-                    <div class="artBlock">
-                        <a href="#" class="portfolioBtn artBtn" id="artBtn"><p class="art">Art</p></a>
+                    <div class="artLink">
+                        <a href="#/art" class="portfolioBtn artBtn" id="artBtn"><p class="art">Art</p></a>
                     </div>
-                    <div class="designBlock">
-                        <a href="#" class="portfolioBtn designBtn" id="designBtn"><p class="design">Design</p></a>
+                    <div class="designLink">
+                        <a href="#/design" class="portfolioBtn designBtn" id="designBtn"><p class="design">Design</p></a>
                     </div>
                 </div>
             </section>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <section class="linksBanner">
+    <section class="linksBanner" id="linksBanner">
         <div class="links">
             <a href="#/home" class="homeHomeBtn" id="homeBtn">home</a>
             <a href="#/work" class="workHomeBtn" id="workBtn">work</a>
@@ -53,27 +53,13 @@
         </div>
     </section>
 
-    <section class="artCloudWrapper" id="artCloudWrapper">
-        <div class="artCloudCenter">
-            <div class="bigCloudPart1"></div>
-            <div class="bigCloudPart2"></div>
-            <div class="bigCloudPart3"></div>
-            <div class="bigCloudPart4"></div>
-            <div class="bigCloudPart5"></div>
-            <div class="bigCloudPart6"></div>
-            <div class="bigCloudPart7"></div>
+    <section class="artGridWrapper" id="artGridWrapper">
+        <div class="artGridCenter" id="artGridCenter">
         </div>
     </section>
 
-     <section class="designCloudWrapper" id="designCloudWrapper">
-        <div class="designCloudCenter">
-            <div class="bigCloudPart1"></div>
-            <div class="bigCloudPart2"></div>
-            <div class="bigCloudPart3"></div>
-            <div class="bigCloudPart4"></div>
-            <div class="bigCloudPart5"></div>
-            <div class="bigCloudPart6"></div>
-            <div class="bigCloudPart7"></div>
+    <section class="designGridWrapper" id="designGridWrapper">
+        <div class="designGridCenter" id="designGridCenter">
         </div>
     </section>
 
@@ -87,17 +73,6 @@
         <div class="balloonLine2"></div>
         <div class="balloonBasket"></div>
     </section>
-
-    <section class="linksBanner">
-        <div class="links">
-           <a href="#/home" class="homeHomeBtn" id="homeBtn">home</a>
-            <a href="#/work" class="workHomeBtn" id="workBtn">work</a>
-            <a href="#">linkedin</a> 
-            <a href="#">twitter</a>
-            <a href="#/contact" class="contactHomeBtn" id="contactBtn">contact</a>
-        </div>
-    </section>
-
 
     <script type="text/javascript" src="js/index.js"> </script>
 
