@@ -2,24 +2,42 @@ var init,
     Carousel, 
     generateClouds, 
     generateGrid,
+    hideArt,
+    hideDesign,
     images = [],
+    isArtShown,
+    isDesignShown,
     mainCarousel, 
     positionClouds, 
     routes,
     showArt, 
-    showDesign;
+    showCarousel,
+    showDesign,
+    //coffeescript.
+    superBind = function(fn, self){ 
+        return function(){ 
+            return fn.apply(self, arguments); 
+        }; 
+    };
 
 // A class definition for a generic carousel
 Carousel = (function() {
     Carousel.prototype.container = null;
     Carousel.prototype.rail = null;
     Carousel.prototype.slides = null;
+    Carousel.prototype.currentIndex = -1;
     
     //Constructor - takes the container, which is a means to find the moving parts of the carousel which are directly inside it
     function Carousel(container) {
+        //'this' always needs to point to the instance of the carousel
+        this.moveTo = superBind(this.moveTo, this);
+        this.resizeSlides = superBind(this.resizeSlides, this);
+        this.moveAfterResize = superBind(this.moveAfterResize, this);
+
         this.container = container;
         this.rail = container.getElementsByClassName('rail')[0];
         this.slides = this.rail.getElementsByClassName('slide');
+        this.currentIndex = 0;
     }
     
     //Add methods to the class
@@ -32,11 +50,24 @@ Carousel = (function() {
         } 
     };
 
+    Carousel.prototype.moveAfterResize = function() {
+        this.moveTo(this.currentIndex);
+    };
+
     Carousel.prototype.moveTo = function (index) {
         var targetSlide = this.slides[index],
             amountToMove = targetSlide.offsetLeft;
         this.rail.style.left = "-" + amountToMove + "px";
+        this.currentIndex = index;
     };
+
+    Carousel.prototype.disableAnimations = function() {
+        this.rail.classList.add("noTransition");
+    }
+
+    Carousel.prototype.enableAnimations = function() {
+        this.rail.classList.remove("noTransition");
+    }
 
     return Carousel;
 })();
@@ -51,12 +82,53 @@ init = function (event) {
     mainCarousel = new Carousel(document.getElementById('container'));
     mainCarousel.resizeSlides();
     //bind makes sure that the value of 'this' is mainCarousel
-    window.addEventListener('resize', mainCarousel.resizeSlides.bind(mainCarousel), false);
+    window.addEventListener('resize', function () {
+        mainCarousel.disableAnimations();
+        mainCarousel.resizeSlides();
+        mainCarousel.moveAfterResize.bind(mainCarousel)();
+        mainCarousel.enableAnimations.bind(mainCarousel)();
+    }, false);
     
     routes = {
-        'home': mainCarousel.moveTo.bind(mainCarousel, 0),
-        'work': mainCarousel.moveTo.bind(mainCarousel, 1),
-        'contact': mainCarousel.moveTo.bind(mainCarousel, 2),
+        'home': function () {
+            if (isArtShown()) {
+                hideArt();
+                showCarousel();
+                mainCarousel.moveTo(0);
+            } else if (isDesignShown()) {
+                hideDesign();
+                showCarousel();
+                mainCarousel.moveTo(0);
+            } else {
+                mainCarousel.moveTo(0);
+            }
+        },
+        'work': function () {
+            if (isArtShown()) {
+                hideArt();
+                showCarousel();
+                mainCarousel.moveTo(1);
+            } else if (isDesignShown()) {
+                hideDesign();
+                showCarousel();
+                mainCarousel.moveTo(1);
+            } else {
+                mainCarousel.moveTo(1);
+            }
+        },
+        'contact': function () {
+            if (isArtShown()) {
+                hideArt();
+                showCarousel();
+                mainCarousel.moveTo(2);
+            } else if (isDesignShown()) {
+                hideDesign();
+                showCarousel();
+                mainCarousel.moveTo(2);
+            } else {
+                mainCarousel.moveTo(2);
+            }
+        },
         'art': showArt,
         'design': showDesign
     };
@@ -129,6 +201,7 @@ positionClouds = function (clouds) {
     }
 };
 
+
 /*------Art & Design/Dev-------*/
 
 showArt = function() {
@@ -159,5 +232,49 @@ generateGrid = function() {
         document.getElementById("artGridCenter").appendChild(block);
     }
 }
+
+isArtShown = function() {
+    return document.getElementById("artGridWrapper").style.display==="block";
+}
+
+isDesignShown = function() {
+    return document.getElementById("designGridWrapper").style.display==="block";
+}
+
+hideArt = function() {
+    if (window.matchMedia("screen and (min-width: 773px)").matches) {
+        document.getElementById("artGridWrapper").style.top="100%";
+        document.getElementById("artGridWrapper").style.display="none";
+    } else {
+        document.getElementById("artGridWrapper").style.opacity="0%";
+        document.getElementById("artGridWrapper").style.display="none";
+    }
+}
+
+hideDesign = function() {
+    if (window.matchMedia("screen and (min-width: 773px)").matches) {
+        document.getElementById("designGridWrapper").style.top="100%";
+        document.getElementById("designGridWrapper").style.display="none";
+    } else {
+        document.getElementById("designGridWrapper").style.opacity="0%";
+        document.getElementById("designGridWrapper").style.display="none";
+    }
+}
+
+showCarousel = function() {
+    if (window.matchMedia("screen and (min-width: 773px)").matches) {
+        document.getElementById("linksBanner").style.width="50%";
+        document.getElementById("linksBanner").style.top="75%";
+        document.getElementById("rail").style.top="12%";
+    } else {
+        document.getElementById("rail").style.top="12%";
+    }
+}
+
+
+
+
+
+
 
 

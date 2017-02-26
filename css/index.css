@@ -30,15 +30,23 @@ body {
     -ms-overflow-x: hidden;
 }
 
-/*---------------------Banner 1------------------------*/
+/*---------------------Carousel------------------------*/
+
+.noTransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
 
 .container {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .rail {
-    width: 100000px;
+    width: 6000px;
     height: 400px;
     display: inline-block;
     position: absolute;
@@ -62,12 +70,15 @@ body {
 
 }
 
+
 .homeBanner {
     -webkit-animation: moveinfullfromleft 1.3s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: moveinfullfromleft 1.3s; /* Firefox < 16 */
     -ms-animation: moveinfullfromleft 1.3s; /* Internet Explorer */
     -o-animation: moveinfullfromleft 1.3s; /* Opera < 12.1 */
-    animation: moveinfullfromleft 1.3s;
+    animation: moveinfullfromleft 0.5s;
+    animation-delay: 0s;
+
 }
 
 .homeBannerCenter, .portfolioBannerCenter {
@@ -127,11 +138,11 @@ body {
         top: 75%;
         width: 50%;
 
-        -webkit-animation: moveinhalf 1s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: moveinhalf 1s; /* Firefox < 16 */
-        -ms-animation: moveinhalf 1s; /* Internet Explorer */
-        -o-animation: moveinhalf 1s; /* Opera < 12.1 */
-        animation: moveinhalf 1s;
+        -webkit-animation: moveinhalf 1.3s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: moveinhalf 1.3s; /* Firefox < 16 */
+        -ms-animation: moveinhalf 1.3s; /* Internet Explorer */
+        -o-animation: moveinhalf 1.3s; /* Opera < 12.1 */
+        animation: moveinhalf 1.3s;
     }
 }
 
@@ -149,8 +160,6 @@ body {
 .portfolioBanner {
     left: 100%;
     display: inline-block;
-
-    transition: all 700ms ease-in-out;
 }
 
 .portfolioBannerCenter {
