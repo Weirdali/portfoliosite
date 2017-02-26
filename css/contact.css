@@ -5,7 +5,7 @@
     transition: all 700ms ease-in-out;
 }
 
-.contactContent {
+.contactCenter {
     width: 70%;
     height: 70%;
     margin: auto;
@@ -13,6 +13,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 607px) {
+    .contactCenter {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 860px) {
+    .contactCenter {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .contactCenter {
+        width: 40%;
+    }
 }
 
 .contactTitle {
