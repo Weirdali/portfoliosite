@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
+@import 'https://fonts.googleapis.com/css?family=Pacifico';
 @import url("nav.css");
 @import url("contact.css");
 @import url("cloud.css");
@@ -21,7 +22,7 @@ p, h1, h2, h3, h4, div, section, body {
 body {
     height: 100%;
     width: 100%;
-    background-color: #98CDE7;
+    background-color: #A4D6DE;
     font-family: 'Quicksand';
     position: relative;
     z-index: -2;
@@ -78,7 +79,8 @@ body {
 }
 
 .name {
-    font-size: 2em;
+    font-family: 'Pacifico';
+    font-size: 5em;
 }
 
 .intro {
@@ -87,8 +89,6 @@ body {
 }
 
 .seeWork {
-    margin-top: 75px;
-    margin-bottom: 50px;
     text-align: center;
 }
 
