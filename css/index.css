@@ -22,7 +22,8 @@ p, h1, h2, h3, h4, div, section, body {
 body {
     height: 100%;
     width: 100%;
-    background-color: #A4D6DE;
+    background-color: #A6D3DC;
+    /*background-color: #A4D6DE;*/
     font-family: 'Quicksand';
     position: relative;
     z-index: -2;
@@ -57,7 +58,9 @@ body {
 
 .slide {
     color: #FF342F;
-    background-color: #67AFD2;
+    background-color: #82C8CF;  
+    /*background-color: #7BC7BE;*/
+    /*background-color: #7BC7DE;*/  
     height: 100%;
     margin-right: 40px;
     vertical-align: top;
@@ -67,9 +70,7 @@ body {
  
 @media screen and (min-width: 773px) {
 
-
 }
-
 
 .homeBanner {
     -webkit-animation: moveinfullfromleft 1.3s; /* Safari, Chrome and Opera > 12.1 */
@@ -78,7 +79,6 @@ body {
     -o-animation: moveinfullfromleft 1.3s; /* Opera < 12.1 */
     animation: moveinfullfromleft 0.5s;
     animation-delay: 0s;
-
 }
 
 .homeBannerCenter, .portfolioBannerCenter {
@@ -92,15 +92,30 @@ body {
 .name {
     font-family: 'Pacifico';
     font-size: 5em;
+    text-align: center;
 }
 
 .intro {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    font-size: 1.1em;
+    text-align: center;
+    padding-bottom: 41px;
 }
 
 .seeWork {
+    font-size: 1.1em;
     text-align: center;
+    padding-bottom: 20px;
+}
+
+@media screen and (min-width: 773px) {
+    .name {
+        text-align: left;
+    }
+  
+    .intro {
+        font-size: 1.6em;
+        text-align: left;
+    }  
 }
 
 .btnStart {
@@ -123,8 +138,8 @@ body {
     font-family: 'Quicksand';
     text-align: center;
     color: #FF342F;
-    background-color: #67AFD2;
-
+    background-color: #82C8CF; 
+    /*background-color: #67AFD2;*/
     position: absolute;
     top: 0;
     width: 100%;
