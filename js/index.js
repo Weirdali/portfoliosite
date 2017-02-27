@@ -13,6 +13,8 @@ var init,
     showArt, 
     showCarousel,
     showDesign,
+    submitContactForm,
+    xhr,
     //coffeescript.
     superBind = function(fn, self){ 
         return function(){ 
@@ -271,6 +273,42 @@ showCarousel = function() {
     }
 }
 
+submitContactForm = function () {
+    xhr = new XMLHttpRequest();
+    xhr.responseType = 'text';
+    xhr.onreadystatechange = function () {
+        var DONE = 4; // readyState 4 means the request is done.
+        var OK = 200; // status 200 is a successful return.
+        if (xhr.readyState === DONE) {
+            if (xhr.status === OK) {
+                // var data = xhr.responseText;
+                // var jsonResponse = JSON.parse(data);
+                // console.log(jsonResponse["Data"]);
+                console.log(xhr.response);
+                console.log(xhr.responseText); // 'This is the returned text.'
+                var obj = JSON.parse(xhr.responseText);
+
+                alert(obj.status);
+
+            } else {
+                console.log('Error: ' + xhr.status); // An error occurred during the request.
+            }
+        }
+    };
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
+    
+
+    xhr.open('POST', 'contact.php');
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+    xhr.send(JSON.stringify({name: name, email: email, message: message}));
+};
+
+document.getElementById('submit').addEventListener('click', function(e) {
+    e.preventDefault();
+    submitContactForm();
+})
 
 
 
