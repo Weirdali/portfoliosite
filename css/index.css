@@ -212,3 +212,75 @@ body {
 .portfolioBtn:hover {
 
 }
+
+/*http://stackoverflow.com/questions/4698830/curved-lines-using-only-html-and-or-css?noredirect=1&lq=1
+http://jsfiddle.net/yijiang/nDxYJ/
+http://www.chloechen.io/a-happy-hot-ballon/*/
+
+.balloon {
+    display: block;
+    width: 60px;
+    height: 84px;
+    position: absolute;
+    top: 74%;
+    left: 80%;
+    transition: all 700ms ease-in-out;
+}
+
+.balloonHead {
+    background-color: #FF342F;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    top: 7px;
+    width: 60px;
+    height: 60px;
+}
+
+.balloonCurve1 {
+    position: absolute;
+    top: -7px;
+    left: 13px;
+    width: 34px;
+    height: 75px;
+    border: 3px solid #de3939;
+    border-color: transparent transparent transparent #de3939; 
+    border-width: 0 0 0 3px;
+
+    -moz-border-radius: 50px 0 0 50px;
+    border-radius: 50px 0 0 50px;
+}
+
+.balloonCurve2 {
+    position: absolute;
+    top: -7px;
+    left: 11px;
+    width: 34px;
+    height: 74px;
+    border: 3px solid #de3939;
+    border-color: transparent #de3939 transparent; 
+    border-width: 0 3px 0 0;
+
+    -moz-border-radius: 0 50px 50px 0;
+    border-radius: 0 50px 50px 0;
+}
+
+.balloonRopes {
+    z-index: -10;
+    position: absolute;
+    top: 56px;
+    left: 50%;
+    width: 60%;
+    transform: translateX(-50%);
+}
+
+.balloonBasket {
+    position: absolute;
+    width: 50%;
+    height: 24px;
+    background-color: #AD5454;
+    border-radius: 0 0 10% 10%;;
+    top: 76px;
+    left: 50%;
+    transform: translateX(-50%);
+}
