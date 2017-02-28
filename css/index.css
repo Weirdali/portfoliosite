@@ -81,7 +81,7 @@ body {
     animation-delay: 0s;
 }
 
-.homeBannerCenter, .portfolioBannerCenter {
+.homeBannerCenter {
     position: relative;
     width: 50%;
     top: 50%;
@@ -168,49 +168,6 @@ body {
 .links a, .links a:visited {
     color: #FF342F;
     text-decoration: none;
-}
-
-/*-------------- Banner 2 -------------*/
-
-.portfolioBanner {
-    left: 100%;
-    display: inline-block;
-}
-
-.portfolioBannerCenter {
-    font-size: 0;
-}
-
-.artLink, .designLink {
-    font-size: medium;
-    display: inline-block;
-    width: 50%;
-    height: 80px;
-    text-align: center;
-
-    position: relative;
-    vertical-align: middle;
-}
-
-.portfolioBtn {
-    color: #FF342F;
-    background-color: white;
-    text-decoration: none;
-
-    position: relative;
-    display: inline-block;
-    width: 80px;
-    height: 100%;
-}
-
-.portfolioBtn p {
-    top: 50%;
-    transform: translateY(-50%);
-    position: relative;
-}
-
-.portfolioBtn:hover {
-
 }
 
 /*------ General -------*/
