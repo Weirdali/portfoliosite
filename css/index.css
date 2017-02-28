@@ -4,6 +4,7 @@
 @import url("cloud.css");
 @import url("animations.css");
 @import url("portfolio.css");
+@import url("balloon.css");
 
 @font-face {
     font-family: 'Quicksand', sans-serif;
@@ -212,90 +213,19 @@ body {
 
 }
 
-/*http://stackoverflow.com/questions/4698830/curved-lines-using-only-html-and-or-css?noredirect=1&lq=1
-http://jsfiddle.net/yijiang/nDxYJ/
-http://www.chloechen.io/a-happy-hot-ballon/*/
-
-.balloonWrapper {  
-    width: 60px;
-    height: 84px;
-    top: 74%;
-    left: 80%;
-    display: block; 
-    position: absolute;
-    
-    -webkit-animation: float 50s linear infinite; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: float 50s linear infinite; /* Firefox < 16 */
-    -ms-animation: float 50s linear infinite; /* Internet Explorer */
-    -o-animation: float 50s linear infinite; /* Opera < 12.1 */
-    animation: float 50s linear infinite; 
+/*------ General -------*/
+.fadeIn {
+    -webkit-animation: fadeIn 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeIn 2s; /* Firefox < 16 */
+    -ms-animation: fadeIn 2s; /* Internet Explorer */
+    -o-animation: fadeIn 2s; /* Opera < 12.1 */
+    animation: fadeIn 2s; 
 }
 
-.balloonCenter {
-    -webkit-animation: wobble 2s linear infinite; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: wobble 2s linear infinite; /* Firefox < 16 */
-    -ms-animation: wobble 2s linear infinite; /* Internet Explorer */
-    -o-animation: wobble 2s linear infinite; /* Opera < 12.1 */
-    animation: wobble 2s linear infinite; 
+.fadeOut {
+    -webkit-animation: fadeOut 2s both; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeOut 2s both; /* Firefox < 16 */
+    -ms-animation: fadeOut 2s both; /* Internet Explorer */
+    -o-animation: fadeOut 2s both; /* Opera < 12.1 */
+    animation: fadeOut 2s both; 
 }
-
-.balloonHead {
-    background-color: #FF342F;
-    border-radius: 50%;
-    top: 7px;
-    width: 60px;
-    height: 60px;
-    position: relative;
-    overflow: hidden;
-    z-index: 10;
-}
-
-.balloonCurve1 {
-    border: 3px solid #de3939;
-    border-color: transparent transparent transparent #de3939; 
-    border-width: 0 0 0 3px;
-    -moz-border-radius: 50px 0 0 50px;
-    border-radius: 50px 0 0 50px;
-    
-    width: 34px;
-    height: 75px;
-    top: -7px;
-    left: 13px;
-    position: absolute;
-}
-
-.balloonCurve2 {
-    border: 3px solid #de3939;
-    border-color: transparent #de3939 transparent; 
-    border-width: 0 3px 0 0;
-    -moz-border-radius: 0 50px 50px 0;
-    border-radius: 0 50px 50px 0;
-    
-    width: 34px;
-    height: 74px;
-    top: -7px;
-    left: 11px;
-    position: absolute;
-}
-
-.balloonRopes {
-    width: 60%;
-    top: 56px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-}
-
-.balloonBasket {
-    background-color: #AD5454;
-    border-radius: 0 0 10% 10%;
-    width: 50%;
-    height: 24px;
-    top: 76px;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    z-index: 10;
-}
-
-
