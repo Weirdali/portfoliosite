@@ -185,7 +185,7 @@ positionClouds = function (clouds) {
     min_x = 0;
     max_x = window.innerWidth
     min_y = 0;
-    max_y = window.innerHeight;
+    max_y = window.innerHeight - 59; //minus height of cloud
 
     for (i = 0; i < clouds.length; i++) {
         rand_x=0;
@@ -309,10 +309,3 @@ document.getElementById('submit').addEventListener('click', function(e) {
     e.preventDefault();
     submitContactForm();
 })
-
-
-
-
-
-
-
