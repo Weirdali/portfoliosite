@@ -3,6 +3,7 @@ var init,
     generateClouds, 
     generateGrid,
     hideArt,
+    hideBalloon,
     hideDesign,
     images = [],
     isArtShown,
@@ -11,6 +12,7 @@ var init,
     positionClouds, 
     routes,
     showArt, 
+    showBalloon,
     showCarousel,
     showDesign,
     submitContactForm,
@@ -104,6 +106,7 @@ init = function (event) {
             } else {
                 mainCarousel.moveTo(0);
             }
+            showBalloon();
         },
         'work': function () {
             if (isArtShown()) {
@@ -117,6 +120,7 @@ init = function (event) {
             } else {
                 mainCarousel.moveTo(1);
             }
+            showBalloon();
         },
         'contact': function () {
             if (isArtShown()) {
@@ -130,9 +134,16 @@ init = function (event) {
             } else {
                 mainCarousel.moveTo(2);
             }
+            showBalloon();
         },
-        'art': showArt,
-        'design': showDesign
+        'art': function () {
+            showArt();
+            hideBalloon();
+        },
+        'design': function () {
+            showDesign();
+            hideBalloon();
+        }
     };
 
     if (typeof routes[hashPath] === 'function') {
@@ -270,6 +281,28 @@ showCarousel = function() {
         document.getElementById("rail").style.top="12%";
     } else {
         document.getElementById("rail").style.top="12%";
+    }
+}
+
+/*---Balloon----*/
+
+document.getElementById('artBtn').addEventListener('click', function(e) {
+    document.getElementById("balloonFade").classList.remove("fadeIn");
+    document.getElementById("balloonFade").classList.add("fadeOut");
+});
+
+hideBalloon = function() {
+    document.getElementById("balloonWrapper").style.display="none";     
+}
+
+showBalloon = function() {
+    if (window.matchMedia("screen and (min-width: 773px)").matches) {
+        document.getElementById("balloonFade").classList.remove("fadeOut");
+        document.getElementById("balloonFade").classList.add("fadeIn");
+        document.getElementById("balloonWrapper").style.opacity="100%";
+        document.getElementById("balloonWrapper").style.display="block";   
+    } else {
+       
     }
 }
 
