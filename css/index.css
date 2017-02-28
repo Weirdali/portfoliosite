@@ -1,6 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
 @import 'https://fonts.googleapis.com/css?family=Pacifico';
-@import url("nav.css");
 @import url("contact.css");
 @import url("cloud.css");
 @import url("animations.css");
@@ -217,70 +216,86 @@ body {
 http://jsfiddle.net/yijiang/nDxYJ/
 http://www.chloechen.io/a-happy-hot-ballon/*/
 
-.balloon {
-    display: block;
+.balloonWrapper {  
     width: 60px;
     height: 84px;
-    position: absolute;
     top: 74%;
     left: 80%;
-    transition: all 700ms ease-in-out;
+    display: block; 
+    position: absolute;
+    
+    -webkit-animation: float 50s linear infinite; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: float 50s linear infinite; /* Firefox < 16 */
+    -ms-animation: float 50s linear infinite; /* Internet Explorer */
+    -o-animation: float 50s linear infinite; /* Opera < 12.1 */
+    animation: float 50s linear infinite; 
+}
+
+.balloonCenter {
+    -webkit-animation: wobble 2s linear infinite; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: wobble 2s linear infinite; /* Firefox < 16 */
+    -ms-animation: wobble 2s linear infinite; /* Internet Explorer */
+    -o-animation: wobble 2s linear infinite; /* Opera < 12.1 */
+    animation: wobble 2s linear infinite; 
 }
 
 .balloonHead {
     background-color: #FF342F;
     border-radius: 50%;
-    overflow: hidden;
-    position: relative;
     top: 7px;
     width: 60px;
     height: 60px;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
 }
 
 .balloonCurve1 {
-    position: absolute;
-    top: -7px;
-    left: 13px;
-    width: 34px;
-    height: 75px;
     border: 3px solid #de3939;
     border-color: transparent transparent transparent #de3939; 
     border-width: 0 0 0 3px;
-
     -moz-border-radius: 50px 0 0 50px;
     border-radius: 50px 0 0 50px;
+    
+    width: 34px;
+    height: 75px;
+    top: -7px;
+    left: 13px;
+    position: absolute;
 }
 
 .balloonCurve2 {
-    position: absolute;
-    top: -7px;
-    left: 11px;
-    width: 34px;
-    height: 74px;
     border: 3px solid #de3939;
     border-color: transparent #de3939 transparent; 
     border-width: 0 3px 0 0;
-
     -moz-border-radius: 0 50px 50px 0;
     border-radius: 0 50px 50px 0;
+    
+    width: 34px;
+    height: 74px;
+    top: -7px;
+    left: 11px;
+    position: absolute;
 }
 
 .balloonRopes {
-    z-index: -10;
-    position: absolute;
+    width: 60%;
     top: 56px;
     left: 50%;
-    width: 60%;
     transform: translateX(-50%);
+    position: absolute;
 }
 
 .balloonBasket {
-    position: absolute;
+    background-color: #AD5454;
+    border-radius: 0 0 10% 10%;
     width: 50%;
     height: 24px;
-    background-color: #AD5454;
-    border-radius: 0 0 10% 10%;;
     top: 76px;
     left: 50%;
     transform: translateX(-50%);
+    position: absolute;
+    z-index: 10;
 }
+
+
