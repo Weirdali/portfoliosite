@@ -240,7 +240,7 @@ generateGrid = function() {
     for (i = 0; i < images.length; i++) {
         imageSrc = images[i]
         block = document.createElement("div");
-        block.classList.add("artBlock");
+        block.classList.add("portfolioBlock");
         block.innerHTML = '<div class="artImage"><img src="' + imageSrc + '"></img></div>';
         document.getElementById("artGridCenter").appendChild(block);
     }
