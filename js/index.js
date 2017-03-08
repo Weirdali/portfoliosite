@@ -222,7 +222,7 @@ showArt = function() {
     document.getElementById("linksBanner").style.top="0%";
     document.getElementById("linksBanner").style.width="100%";
     document.getElementById("artGridWrapper").style.display="block";
-    document.getElementById("artGridWrapper").style.top="20%";
+    document.getElementById("artGridWrapper").style.top="14%";
 }
 
 showDesign = function() {
@@ -230,7 +230,7 @@ showDesign = function() {
     document.getElementById("linksBanner").style.top="0%";
     document.getElementById("linksBanner").style.width="100%";
     document.getElementById("designGridWrapper").style.display="block";
-    document.getElementById("designGridWrapper").style.top="20%";
+    document.getElementById("designGridWrapper").style.top="14%";
 }
 
 generateGrid = function() {

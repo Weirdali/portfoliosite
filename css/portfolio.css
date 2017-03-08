@@ -62,7 +62,7 @@
     display: none;
     
     position: absolute;
-    top: 15%;
+    top: 14%;
 
     -webkit-animation-name: moveUp;
     animation-name: moveUp;
@@ -77,9 +77,10 @@
 
 .artGridCenter, .designGridCenter {
     color: #FF342F;
-    text-align: center;
-    padding-left: 6%;
-    padding-right: 6%;
+    text-align: justify;
+    text-align-last: justify;
+    width: 83%;
+    margin: auto;
 
     height: 100%;
     
@@ -94,7 +95,7 @@
 .portfolioBlock {
     display: inline-block;
     position: relative;
-    width: 100%;
+    width: 48%;
     margin-bottom: 20px;
     overflow: visible;
     overflow-x: auto;
@@ -134,9 +135,9 @@
 .portfolioImageLargeWrapper {
     position: fixed;
     display: block;
-    width: 50%;
+    width: 83%;
     left: 50%;
-    top: 50%;
+    top: 35%;
     transform: translate(-50%,-50%);
     z-index: 10;
 }
@@ -151,18 +152,38 @@
 @media screen and (min-width: 500px) {
     .portfolioBlock {
         width: 45%;
-    
-        margin: 9px;
+        margin-bottom: 30px;
+    }
+
+    .portfolioImageLargeWrapper {
+        width: 64%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
     }
 }
 
 @media screen and (min-width: 773px) {
     .portfolioBlock {
-        width: 25%;
-        margin: 13px;
+        width: 31%;
     }
 
-    .artImage {
-
+    .portfolioImageLargeWrapper {
+        width: 50%;
     }
+}
+
+@media screen and (min-width: 1111px) {
+    .artGridCenter, .designGridCenter {
+        width: 70%;
+    }
+
+    .portfolioBlock {
+        width: 29%;
+    }
+
+    .portfolioImageLargeWrapper {
+        width: 39%;
+    }
+
 }
