@@ -337,6 +337,7 @@ showBalloon = function() {
 submitContactForm = function () {
     xhr = new XMLHttpRequest();
     xhr.responseType = 'text';
+
     xhr.onreadystatechange = function () {
         var DONE = 4; // readyState 4 means the request is done.
         var OK = 200; // status 200 is a successful return.
@@ -348,9 +349,10 @@ submitContactForm = function () {
                 console.log(xhr.response);
                 console.log(xhr.responseText); // 'This is the returned text.'
                 var obj = JSON.parse(xhr.responseText);
-
-                alert(obj.status);
-
+                var response = "<p>" + obj.statusMsg + "</p>";
+                document.getElementById("replyMessage").style.display="block";
+                document.getElementById("replyMessage").innerHTML = response;
+                
             } else {
                 console.log('Error: ' + xhr.status); // An error occurred during the request.
             }
@@ -360,7 +362,6 @@ submitContactForm = function () {
     var email = document.getElementById("email").value;
     var message = document.getElementById("message").value;
     
-
     xhr.open('POST', 'contact.php');
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.send(JSON.stringify({name: name, email: email, message: message}));

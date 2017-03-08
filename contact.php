@@ -30,7 +30,7 @@ else {
     {
 
         $msg["status"] = 1;
-        $msg["statusMsg"] = "Please enter valid email";
+        $msg["statusMsg"] = "Please enter valid email!";
 
     } else {
 
@@ -43,7 +43,7 @@ else {
         $msg["email"] = $email;
         $msg["emailMsg"] = $emailMsg;
         $msg["status"] = 0;
-        $msg["statusMsg"] = "Success";
+        $msg["statusMsg"] = "Message sent!";
 
     }
 }
