@@ -96,6 +96,14 @@
     position: relative;
     width: 100%;
     margin-bottom: 20px;
+    overflow: visible;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.portfolioImageWrapper:hover {
+    cursor: pointer;
+    box-shadow: 10px 10px 5px #888888
 }
 
 .portfolioImage {
@@ -106,20 +114,24 @@
 
 .portfolioImage img {
     position: relative;
-
+    display: block;
     width: 100%;
     height: 100%;
 }
 
-.portfolioImageLarge {
-    display: none;
+.portfolioImageOverlay {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    display: block;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    z-index: 5;
 }
-
-.portfolioImageLarge img {
-
-}
-
-.portfolioBlock:hover > .portfolioImageLarge {
+    
+.portfolioImageLargeWrapper {
     position: fixed;
     display: block;
     width: 50%;
@@ -129,14 +141,17 @@
     z-index: 10;
 }
 
-.portfolioBlock:hover > .portfolioImageLarge img {
+.portfolioImageLargeWrapper img {
     width: 100%;
     height: 100%;
+    display: block;
+    z-index: 11;
 }
 
 @media screen and (min-width: 500px) {
     .portfolioBlock {
         width: 45%;
+    
         margin: 9px;
     }
 }

@@ -230,6 +230,7 @@ showDesign = function() {
     document.getElementById("linksBanner").style.top="0%";
     document.getElementById("linksBanner").style.width="100%";
     document.getElementById("designGridWrapper").style.display="block";
+    document.getElementById("designGridWrapper").style.top="20%";
 }
 
 generateGrid = function() {
@@ -245,6 +246,33 @@ generateGrid = function() {
         document.getElementById("artGridCenter").appendChild(block);
     }
 }
+
+Array.prototype.slice.call(document.getElementsByClassName('portfolioImageWrapper')).forEach(function(block){
+    block.addEventListener('click', function(e) {
+        e.preventDefault();
+        var largeImage,
+            imageOverlay,
+            imageSrc;
+
+        imageSrc = (block.querySelector('.regular').getAttribute('src'));
+        largeImage = document.createElement("div");
+        largeImage.classList.add("portfolioImageLargeWrapper");
+        largeImage.id = "portfolioImageLargeWrapper";
+        largeImage.innerHTML = '<img class="fullScreen" src="' + imageSrc + '"/>';
+        block.parentNode.appendChild(largeImage);
+        
+        imageOverlay = document.createElement("div");
+        imageOverlay.classList.add("portfolioImageOverlay");
+        imageOverlay.id = "portfolioImageOverlay"; 
+        block.parentNode.appendChild(imageOverlay);
+ 
+        largeImage.addEventListener('click', function(e) {
+            e.preventDefault();
+            block.parentNode.removeChild(largeImage);
+            block.parentNode.removeChild(imageOverlay);
+        });
+    });
+});
 
 isArtShown = function() {
     return document.getElementById("artGridWrapper").style.display==="block";
