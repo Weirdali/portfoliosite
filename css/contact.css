@@ -63,10 +63,11 @@
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 3px;
-    resize: vertical;
+    resize: none;
 }
 
 .contactButton {
+    font-size: 14px;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
@@ -76,11 +77,11 @@
     /*background-color: #23365F;*/
 }
 
-.contactButton:hover {
- cursor:pointer;
+.contactButton: hover {
+    cursor: pointer;
 }
 
-[contenteditable="true"]:focus {
+[contenteditable="true"]: focus {
     outline: none;
 }
 
