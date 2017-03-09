@@ -1,5 +1,8 @@
 var init,    
     Carousel, 
+    calculatePortraitImageAppropriateWidth,
+    calculateLandscapeImageAppropriateHeight,
+    closeLargeImage,
     generateClouds, 
     hideArt,
     hideBalloon,
@@ -227,7 +230,7 @@ showDesign = function() {
 //Actual width of image
 //Actual height of image
 
-var calculatePortraitImageAppropriateWidth = function (image) {
+calculatePortraitImageAppropriateWidth = function (image) {
     var actualHeight = image.naturalHeight,
         actualWidth = image.naturalWidth,
         targetHeight = window.innerHeight * 0.8;
@@ -235,7 +238,7 @@ var calculatePortraitImageAppropriateWidth = function (image) {
     return actualWidth * targetHeight / actualHeight;
 };
 
-var calculateLandscapeImageAppropriateWidth = function (image) {
+calculateLandscapeImageAppropriateWidth = function (image) {
     var actualHeight = image.naturalHeight,
         actualWidth = image.naturalWidth,
         targetWidth = window.innerWidth * 0.6;
@@ -278,13 +281,33 @@ Array.prototype.slice.call(document.getElementsByClassName('portfolioImageWrappe
             }
         });
  
-        largeImageWrapper.addEventListener('click', function(e) {
-            e.preventDefault();
-            block.parentNode.removeChild(largeImageWrapper);
-            block.parentNode.removeChild(imageOverlay);
-        });
+        largeImageWrapper.addEventListener('click', closeLargeImage.bind(this, block, largeImageWrapper, imageOverlay), true);
+        document.addEventListener('keydown', function(e){
+            var evt = e || window.event;
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+            } else {
+                isEscape = (evt.keyCode === 27);
+            }
+            if (isEscape) {
+                closeLargeImage(block, largeImageWrapper, imageOverlay, evt);
+            }
+        }, true);
+         
     });
 });
+
+closeLargeImage = function(block, largeImageWrapper, imageOverlay, e) {
+    e && e.preventDefault();
+    try {
+        block.parentNode.removeChild(largeImageWrapper);
+        block.parentNode.removeChild(imageOverlay);
+    } catch (ex) {
+        //Do nothing; this is actually fine
+    }
+    
+}
 
 isImagePortrait = function(largeImage) {
     return largeImage.offsetWidth < largeImage.offsetHeight;
