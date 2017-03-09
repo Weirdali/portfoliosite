@@ -134,9 +134,8 @@
 .portfolioImageLargeWrapper {
     position: fixed;
     display: block;
-    width: 83%;
     left: 50%;
-    top: 35%;
+    top: 50%;
     transform: translate(-50%,-50%);
     z-index: 10;
 }
@@ -157,22 +156,11 @@
         width: 45%;
         margin-bottom: 30px;
     }
-
-    .portfolioImageLargeWrapper {
-        width: 64%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-    }
 }
 
 @media screen and (min-width: 773px) {
     .portfolioBlock {
         width: 31%;
-    }
-
-    .portfolioImageLargeWrapper {
-        width: 50%;
     }
 }
 
@@ -184,9 +172,4 @@
     .portfolioBlock {
         width: 29%;
     }
-
-    .portfolioImageLargeWrapper {
-        width: 39%;
-    }
-
 }
