@@ -1,14 +1,13 @@
 var init,    
     Carousel, 
     generateClouds, 
-    generateGrid,
     hideArt,
     hideBalloon,
     hideDesign,
-    images = [],
     isArtShown,
     isDesignShown,
     mainCarousel, 
+    isImagePortrait,
     positionClouds, 
     routes,
     showArt, 
@@ -148,16 +147,7 @@ init = function (event) {
 
     if (typeof routes[hashPath] === 'function') {
         routes[hashPath]();
-    } 
-
-    images[0] = "/alicegee/img/me.jpg";
-    images[1] = "/alicegee/img/me.jpg";
-    images[2] = "/alicegee/img/me.jpg";
-    images[3] = "/alicegee/img/me.jpg";
-    images[4] = "/alicegee/img/me.jpg";
-    images[5] = "/alicegee/img/me.jpg";
-
-    generateGrid();    
+    }    
 };
 
 //This is a hash value which happens to be a path. The / means it doesn't jump to IDs
@@ -233,46 +223,72 @@ showDesign = function() {
     document.getElementById("designGridWrapper").style.top="14%";
 }
 
-generateGrid = function() {
-    var i, 
-        artBlock,
-        imageSrc;
-    
-    for (i = 0; i < images.length; i++) {
-        imageSrc = images[i]
-        block = document.createElement("div");
-        block.classList.add("portfolioBlock");
-        block.innerHTML = '<div class="artImage"><img src="' + imageSrc + '"></img></div>';
-        document.getElementById("artGridCenter").appendChild(block);
-    }
-}
+//Get height of screen - use 80% of it
+//Actual width of image
+//Actual height of image
+
+var calculatePortraitImageAppropriateWidth = function (image) {
+    var actualHeight = image.naturalHeight,
+        actualWidth = image.naturalWidth,
+        targetHeight = window.innerHeight * 0.8;
+
+    return actualWidth * targetHeight / actualHeight;
+};
+
+var calculateLandscapeImageAppropriateWidth = function (image) {
+    var actualHeight = image.naturalHeight,
+        actualWidth = image.naturalWidth,
+        targetWidth = window.innerWidth * 0.6;
+
+    return actualHeight * targetWidth / actualWidth;
+};
 
 Array.prototype.slice.call(document.getElementsByClassName('portfolioImageWrapper')).forEach(function(block){
     block.addEventListener('click', function(e) {
         e.preventDefault();
-        var largeImage,
+        var largeImageWrapper,
+            largeImage,
             imageOverlay,
             imageSrc;
 
-        imageSrc = (block.querySelector('.regular').getAttribute('src'));
-        largeImage = document.createElement("div");
-        largeImage.classList.add("portfolioImageLargeWrapper");
-        largeImage.id = "portfolioImageLargeWrapper";
-        largeImage.innerHTML = '<img class="fullScreen" src="' + imageSrc + '"/>';
-        block.parentNode.appendChild(largeImage);
+        imageSrc = (block.querySelector('.portfolioImage').getAttribute('href'));
+        largeImageWrapper = document.createElement("div");
+        largeImageWrapper.classList.add("portfolioImageLargeWrapper");
+        largeImageWrapper.id = "portfolioImageLargeWrapper";
+
+        largeImage = document.createElement("img");
+        largeImage.classList.add("fullScreen");
+        largeImage.src = imageSrc;
+
+        largeImageWrapper.appendChild(largeImage);
+        block.parentNode.appendChild(largeImageWrapper);
         
         imageOverlay = document.createElement("div");
         imageOverlay.classList.add("portfolioImageOverlay");
-        imageOverlay.id = "portfolioImageOverlay"; 
+        imageOverlay.id = "portfolioImageOverlay";
         block.parentNode.appendChild(imageOverlay);
+
+        largeImage.addEventListener('load', function () {
+            if (isImagePortrait(largeImage)) {
+                largeImageWrapper.style.width = calculatePortraitImageAppropriateWidth(largeImage) + 'px';
+                largeImageWrapper.style.height = "80%";
+            } else {
+                largeImageWrapper.style.width = calculateLandscapeImageAppropriateWidth(largeImage) + "px";
+                largeImage.style.height = "50%";
+            }
+        });
  
-        largeImage.addEventListener('click', function(e) {
+        largeImageWrapper.addEventListener('click', function(e) {
             e.preventDefault();
-            block.parentNode.removeChild(largeImage);
+            block.parentNode.removeChild(largeImageWrapper);
             block.parentNode.removeChild(imageOverlay);
         });
     });
 });
+
+isImagePortrait = function(largeImage) {
+    return largeImage.offsetWidth < largeImage.offsetHeight;
+}
 
 isArtShown = function() {
     return document.getElementById("artGridWrapper").style.display==="block";
