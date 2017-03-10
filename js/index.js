@@ -71,11 +71,11 @@ Carousel = (function() {
 
     Carousel.prototype.disableAnimations = function() {
         this.rail.classList.add("noTransition");
-    }
+    };
 
     Carousel.prototype.enableAnimations = function() {
         this.rail.classList.remove("noTransition");
-    }
+    };
 
     return Carousel;
 })();
@@ -89,6 +89,7 @@ init = function (event) {
 
     mainCarousel = new Carousel(document.getElementById('container'));
     mainCarousel.resizeSlides();
+
     //bind makes sure that the value of 'this' is mainCarousel
     window.addEventListener('resize', function () {
         mainCarousel.disableAnimations();
@@ -97,6 +98,7 @@ init = function (event) {
         mainCarousel.enableAnimations.bind(mainCarousel)();
     }, false);
     
+    //JSON format data so that a 
     routes = {
         'home': function () {
             if (isArtShown()) {
@@ -168,16 +170,18 @@ window.addEventListener("hashchange", function () {
     //substr[2] cuts off the first 2 characters, which are #/
     var hashPath = location.hash.substr(2);
     
-    //checking the type so th
+    //checking the type so that 
     if (typeof routes[hashPath] === 'function') {
         routes[hashPath]();
     } 
 }, false);
 
+//The 'init' function given above is passed as an argument to the event listener 
+//for the loading of the DOM content i.e. the page
+
 document.addEventListener("DOMContentLoaded", init); 
 
 /* note: Credit this guy => http://jsfiddle.net/fZtdt/498/ */
-
 generateClouds = function () {
     var i, 
         cloud, 
@@ -216,7 +220,6 @@ positionClouds = function (clouds) {
         clouds[i].style.top=rand_y + "px";
     }
 };
-
 
 /*------Art & Design/Dev-------*/
 
@@ -382,7 +385,7 @@ showCarousel = function() {
     }
 }
 
-/*--------Balloon-------*/
+/*--------Balloon---------*/
 
 document.getElementById('artBtn').addEventListener('click', function(e) {
     document.getElementById("balloonFade").classList.remove("fadeIn");
@@ -404,6 +407,8 @@ showBalloon = function() {
     }
 }
 
+/*-------Contact form-------*/
+
 submitContactForm = function () {
     xhr = new XMLHttpRequest();
     xhr.responseType = 'text';
@@ -418,6 +423,8 @@ submitContactForm = function () {
                 // console.log(jsonResponse["Data"]);
                 console.log(xhr.response);
                 console.log(xhr.responseText); // 'This is the returned text.'
+
+                // Take JSON data and display it on screen 
                 var obj = JSON.parse(xhr.responseText);
                 var response = "<p>" + obj.statusMsg + "</p>";
                 document.getElementById("replyMessage").style.display="block";
