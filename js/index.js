@@ -197,7 +197,7 @@ positionClouds = function (clouds) {
     var min_x, max_x, min_y, max_y, filled_areas=[], i, rand_x, rand_y, area;
 
     min_x = 0;
-    max_x = window.innerWidth
+    max_x = window.innerWidth - 100; //minus width of cloud
     min_y = 0;
     max_y = window.innerHeight - 59; //minus height of cloud
 
