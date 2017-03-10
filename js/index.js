@@ -17,7 +17,7 @@ var init,
     showPortfolioElement,
     submitContactForm,
     xhr,
-    //coffeescript
+    // coffeescript. Bind function for ease of use 
     superBind = function(fn, self){ 
         return function(){ 
             return fn.apply(self, arguments); 
@@ -31,9 +31,9 @@ Carousel = (function() {
     Carousel.prototype.slides = null;
     Carousel.prototype.currentIndex = -1;
     
-    //Constructor - takes the container, which is a means to find the moving parts of the carousel which are directly inside it
+    // Constructor - takes the container, which is a means to find the moving parts of the carousel which are directly inside it
     function Carousel(container) {
-        //'this' always needs to point to the instance of the carousel
+        // 'this' always needs to point to the instance of the carousel
         this.moveTo = superBind(this.moveTo, this);
         this.resizeSlides = superBind(this.resizeSlides, this);
         this.moveAfterResize = superBind(this.moveAfterResize, this);
@@ -44,7 +44,7 @@ Carousel = (function() {
         this.currentIndex = 0;
     }
     
-    //Add methods to the class
+    // Add methods to the class
     Carousel.prototype.resizeSlides = function () {
         var i, 
             slides = this.slides;
@@ -94,7 +94,7 @@ init = function (event) {
         mainCarousel.enableAnimations.bind(mainCarousel)();
     }, false);
     
-    //JSON format data so that a 
+    //JSON format data
     routes = {
         'home': function () {
             hidePortfolioElementAndShowCarousel(0);
@@ -130,14 +130,13 @@ window.addEventListener("hashchange", function () {
     //substr[2] cuts off the first 2 characters, which are #/
     var hashPath = location.hash.substr(2);
     
-    //checking the type so that 
+    //checking the type 
     if (typeof routes[hashPath] === 'function') {
         routes[hashPath]();
     } 
 }, false);
 
-//The 'init' function given above is passed as an argument to the event listener 
-//for the loading of the DOM content i.e. the page
+// The 'init' function given above is passed as an argument to the event listener for the loading of the DOM content i.e. the page
 document.addEventListener("DOMContentLoaded", init); 
 
 /* Javascript converted from Jquery given here:
@@ -193,9 +192,9 @@ showPortfolioElement = function(element, top) {
     hideBalloon();
 }
 
-//Get height of screen - use 80% of it
-//Actual width of image
-//Actual height of image
+// Get height of screen - use 80% of it
+// Actual width of image
+// Actual height of image
 
 calculatePortraitImageAppropriateWidth = function (image) {
     var actualHeight = image.naturalHeight,
@@ -271,7 +270,7 @@ closeLargeImage = function(block, largeImageWrapper, imageOverlay, e) {
         block.parentNode.removeChild(largeImageWrapper);
         block.parentNode.removeChild(imageOverlay);
     } catch (ex) {
-        //Do nothing; this is actually fine
+        // Do nothing; this is actually fine
     }
 }
 
@@ -334,7 +333,7 @@ showBalloon = function() {
         document.getElementById("balloonWrapper").style.opacity="100%";
         document.getElementById("balloonWrapper").style.display="block";   
     } else {
-       
+       // Do nothing
     }
 }
 
