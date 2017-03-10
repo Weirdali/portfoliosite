@@ -17,7 +17,8 @@ var init,
     showPortfolioElement,
     submitContactForm,
     xhr,
-    // coffeescript. Bind function for ease of use 
+    // Bind function for ease of use of the carousel. 
+    //Makes sure that 'this' is the instance of the carousel
     superBind = function(fn, self){ 
         return function(){ 
             return fn.apply(self, arguments); 
@@ -195,7 +196,6 @@ showPortfolioElement = function(element, top) {
 // Get height of screen - use 80% of it
 // Actual width of image
 // Actual height of image
-
 calculatePortraitImageAppropriateWidth = function (image) {
     var actualHeight = image.naturalHeight,
         actualWidth = image.naturalWidth,
