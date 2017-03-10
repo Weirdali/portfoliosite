@@ -23,7 +23,6 @@ body {
     height: 100%;
     width: 100%;
     background-color: #A6D3DC;
-    /*background-color: #A4D6DE;*/
     font-family: 'Quicksand';
     position: relative;
     z-index: -2;
@@ -58,18 +57,12 @@ body {
 
 .slide {
     color: #FF342F;
-    background-color: #82C8CF;  
-    /*background-color: #7BC7BE;*/
-    /*background-color: #7BC7DE;*/  
+    background-color: #82C8CF;   
     height: 100%;
     margin-right: 40px;
     vertical-align: top;
     display: inline-block; 
     position: relative;
-}
- 
-@media screen and (min-width: 773px) {
-
 }
 
 .homeBanner {
@@ -107,6 +100,16 @@ body {
     padding-bottom: 20px;
 }
 
+.btnStart {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+
+    background-color: white;
+    text-decoration: none;
+    color: #FF342F;
+}
+
 @media screen and (min-width: 773px) {
     .name {
         text-align: left;
@@ -118,33 +121,27 @@ body {
     }  
 }
 
-.btnStart {
-    display: inline-block;
-    position: relative;
-    padding: 10px;
-
-    background-color: white;
-    text-decoration: none;
-    color: #FF342F;
-}
-
-.btnStart:hover {
-
-}
-
 /*------------- Links Banner ------------*/
 
 .linksBanner {
     font-family: 'Quicksand';
     text-align: center;
     color: #FF342F;
-    background-color: #82C8CF; 
-    /*background-color: #67AFD2;*/
+    background-color: #82C8CF;
     position: absolute;
     top: 0;
     width: 100%;
 
     transition: all 700ms ease-in-out;
+}
+
+.links {
+    margin: 10px;
+}
+
+.links a, .links a:visited {
+    color: #FF342F;
+    text-decoration: none;
 }
 
 @media screen and (min-width: 773px) {
@@ -159,15 +156,6 @@ body {
         -o-animation: moveinhalf 1.3s; /* Opera < 12.1 */
         animation: moveinhalf 1.3s;
     }
-}
-
-.links {
-    margin: 10px;
-}
-
-.links a, .links a:visited {
-    color: #FF342F;
-    text-decoration: none;
 }
 
 /*------------- iframe --------------*/
@@ -195,6 +183,7 @@ body {
 }
 
 /*------ General -------*/
+
 .fadeIn {
     -webkit-animation: fadeIn 2s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadeIn 2s; /* Firefox < 16 */

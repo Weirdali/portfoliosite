@@ -2,8 +2,6 @@
     width: 100px;
     height: 59px;
     position: absolute;
-    /*top: 25%;
-    left: 25%;*/
     z-index: -10000000;
 }
 
@@ -55,9 +53,4 @@
     position: absolute;
     left: 41px;
     top: 15px;
-}
-
-.cloudBase:hover, div[class^="cloudPart"]:hover {
-    width: 45px;
-    height: 45px;
 }

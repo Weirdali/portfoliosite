@@ -1,3 +1,5 @@
+/*----Banner-----*/
+
 .portfolioBanner {
     left: 100%;
     display: inline-block;
@@ -58,6 +60,8 @@
     }
 }
 
+/*------Grids-----*/
+
 .artGridWrapper, .designGridWrapper {
     display: none;
     position: absolute;
@@ -103,7 +107,6 @@
 
 .portfolioImageWrapper:hover {
     cursor: pointer;
-    box-shadow: 10px 10px 5px #888888
 }
 
 .portfolioImage {

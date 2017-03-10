@@ -1,7 +1,6 @@
-/*http://stackoverflow.com/questions/4698830/curved-lines-using-only-html-and-or-css?noredirect=1&lq=1
-http://jsfiddle.net/yijiang/nDxYJ/
-http://www.chloechen.io/a-happy-hot-ballon/*/
-
+/* Inspiration for balloon from:
+http://www.chloechen.io/a-happy-hot-ballon/
+*/
 .balloonWrapper {  
     display: none;
 }
@@ -46,6 +45,10 @@ http://www.chloechen.io/a-happy-hot-ballon/*/
         z-index: 10;
     }
 
+    /* Inspiration for this code taken from:
+    http://stackoverflow.com/questions/4698830/curved-lines-using-only-html-and-or-css?noredirect=1&lq=1
+    http://jsfiddle.net/yijiang/nDxYJ/
+    */
     .balloonCurve1 {
         border: 3px solid #de3939;
         border-color: transparent transparent transparent #de3939; 

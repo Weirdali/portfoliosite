@@ -1,6 +1,5 @@
 .contactBanner {
     left: 200%;
-
     display: inline-block;
     transition: all 700ms ease-in-out;
 }
@@ -13,24 +12,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-@media screen and (min-width: 607px) {
-    .contactCenter {
-        width: 60%;
-    }
-}
-
-@media screen and (min-width: 860px) {
-    .contactCenter {
-        width: 50%;
-    }
-}
-
-@media screen and (min-width: 1100px) {
-    .contactCenter {
-        width: 40%;
-    }
 }
 
 .contactTitle {
@@ -74,7 +55,6 @@
     border: none;
     background-color: white;
     color: #FF342F;
-    /*background-color: #23365F;*/
 }
 
 .contactButton: hover {
@@ -89,4 +69,22 @@
     display: none;
     text-align: center;
     width: 100%;
+}
+
+@media screen and (min-width: 607px) {
+    .contactCenter {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 860px) {
+    .contactCenter {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .contactCenter {
+        width: 40%;
+    }
 }
