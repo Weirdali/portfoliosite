@@ -9,6 +9,7 @@ var init,
     hideDesign,
     isArtShown,
     isDesignShown,
+    isWebDesignShown,
     mainCarousel, 
     isImagePortrait,
     positionClouds, 
@@ -17,6 +18,7 @@ var init,
     showBalloon,
     showCarousel,
     showDesign,
+    showWebDesign,
     submitContactForm,
     xhr,
     //coffeescript.
@@ -100,47 +102,55 @@ init = function (event) {
             if (isArtShown()) {
                 hideArt();
                 showCarousel();
-                mainCarousel.moveTo(0);
             } else if (isDesignShown()) {
                 hideDesign();
                 showCarousel();
-                mainCarousel.moveTo(0);
-            } else {
-                mainCarousel.moveTo(0);
+            } else if (isWebDesignShown()) {
+                hideWebDesign();
+                showCarousel();
             }
+            mainCarousel.moveTo(0);
             showBalloon();
         },
         'work': function () {
             if (isArtShown()) {
                 hideArt();
                 showCarousel();
-                mainCarousel.moveTo(1);
             } else if (isDesignShown()) {
                 hideDesign();
                 showCarousel();
-                mainCarousel.moveTo(1);
-            } else {
-                mainCarousel.moveTo(1);
-            }
+            } else if (isWebDesignShown()) {
+                hideWebDesign();
+                showCarousel();
+            }   
+            mainCarousel.moveTo(1);
             showBalloon();
         },
         'contact': function () {
             if (isArtShown()) {
                 hideArt();
                 showCarousel();
-                mainCarousel.moveTo(2);
             } else if (isDesignShown()) {
                 hideDesign();
                 showCarousel();
-                mainCarousel.moveTo(2);
-            } else {
-                mainCarousel.moveTo(2);
+            } else if (isWebDesignShown()) {
+                hideWebDesign();
+                showCarousel();
             }
+            mainCarousel.moveTo(2);
             showBalloon();
         },
         'art': function () {
             showArt();
             hideBalloon();
+        },
+        'webDesign' : function () {
+            if (window.innerWidth < 773) {
+                window.location.href = "http://alicegee.com/ctec1412/01home.xhtml";
+            } else {
+                showWebDesign();
+                hideBalloon();
+            }
         },
         'design': function () {
             showDesign();
@@ -216,6 +226,14 @@ showArt = function() {
     document.getElementById("linksBanner").style.width="100%";
     document.getElementById("artGridWrapper").style.display="block";
     document.getElementById("artGridWrapper").style.top="14%";
+}
+
+showWebDesign = function() {
+    document.getElementById("rail").style.top="-100%";
+    document.getElementById("linksBanner").style.top="0%";
+    document.getElementById("linksBanner").style.width="100%";
+    document.getElementById("webDesignFrame").style.display="block";
+    document.getElementById("webDesignFrame").style.top="40px";
 }
 
 showDesign = function() {
@@ -306,7 +324,6 @@ closeLargeImage = function(block, largeImageWrapper, imageOverlay, e) {
     } catch (ex) {
         //Do nothing; this is actually fine
     }
-    
 }
 
 isImagePortrait = function(largeImage) {
@@ -315,6 +332,10 @@ isImagePortrait = function(largeImage) {
 
 isArtShown = function() {
     return document.getElementById("artGridWrapper").style.display==="block";
+}
+
+isWebDesignShown = function() {
+    return document.getElementById("webDesignFrame").style.display==="block";
 }
 
 isDesignShown = function() {
@@ -328,6 +349,16 @@ hideArt = function() {
     } else {
         document.getElementById("artGridWrapper").style.opacity="0%";
         document.getElementById("artGridWrapper").style.display="none";
+    }
+}
+
+hideWebDesign = function() {
+    if (window.matchMedia("screen and (min-width: 773px)").matches) {
+        document.getElementById("webDesignFrame").style.top="100%";
+        document.getElementById("webDesignFrame").style.display="none";
+    } else {
+        document.getElementById("webDesignFrame").style.opacity="0%";
+        document.getElementById("webDesignFrame").style.display="none";
     }
 }
 
@@ -351,7 +382,7 @@ showCarousel = function() {
     }
 }
 
-/*---Balloon----*/
+/*--------Balloon-------*/
 
 document.getElementById('artBtn').addEventListener('click', function(e) {
     document.getElementById("balloonFade").classList.remove("fadeIn");
@@ -376,6 +407,7 @@ showBalloon = function() {
 submitContactForm = function () {
     xhr = new XMLHttpRequest();
     xhr.responseType = 'text';
+
     xhr.onreadystatechange = function () {
         var DONE = 4; // readyState 4 means the request is done.
         var OK = 200; // status 200 is a successful return.
@@ -387,9 +419,10 @@ submitContactForm = function () {
                 console.log(xhr.response);
                 console.log(xhr.responseText); // 'This is the returned text.'
                 var obj = JSON.parse(xhr.responseText);
-
-                alert(obj.status);
-
+                var response = "<p>" + obj.statusMsg + "</p>";
+                document.getElementById("replyMessage").style.display="block";
+                document.getElementById("replyMessage").innerHTML = response;
+                
             } else {
                 console.log('Error: ' + xhr.status); // An error occurred during the request.
             }
@@ -399,7 +432,6 @@ submitContactForm = function () {
     var email = document.getElementById("email").value;
     var message = document.getElementById("message").value;
     
-
     xhr.open('POST', 'contact.php');
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
     xhr.send(JSON.stringify({name: name, email: email, message: message}));

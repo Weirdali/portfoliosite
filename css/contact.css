@@ -63,10 +63,11 @@
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 3px;
-    resize: vertical;
+    resize: none;
 }
 
 .contactButton {
+    font-size: 14px;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
@@ -76,42 +77,16 @@
     /*background-color: #23365F;*/
 }
 
-.contactButton:hover {
- cursor:pointer;
+.contactButton: hover {
+    cursor: pointer;
 }
 
-
-[contenteditable="true"]:focus {
+[contenteditable="true"]: focus {
     outline: none;
 }
 
-/* -------- balloon --------- */
-
-
-
-/*
-.balloonLine1 {
-    height: 22px;
-    width: 22px;
-    position: absolute;
-    z-index: -1;x
-    left: 9px;
-    top: 22px;
-    border: red solid 1px;
-    border-right: red solid 1px;
-    transform: rotate(53deg) skew(18deg);
-}*/
-
-/*
-.balloonLine1 {
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #f00;
+.replyMessage {
+    display: none;
+    text-align: center;
+    width: 100%;
 }
-
-.balloonLine2 {
-    border-left: 20px solid transparent;
-    border-right: 20px solid white;
-    border-top: 20px solid transparent;
-}*/
-
