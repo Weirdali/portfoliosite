@@ -217,9 +217,11 @@ Array.prototype.slice.call(document.getElementsByClassName('portfolioImageWrappe
         e.preventDefault();
         var largeImageWrapper,
             largeImage,
+            imageAlt,
             imageOverlay,
             imageSrc;
 
+        imageAlt = (block.querySelector('.regular').getAttribute('alt'));
         imageSrc = (block.querySelector('.portfolioImage').getAttribute('href'));
         largeImageWrapper = document.createElement("div");
         largeImageWrapper.classList.add("portfolioImageLargeWrapper");
@@ -228,6 +230,7 @@ Array.prototype.slice.call(document.getElementsByClassName('portfolioImageWrappe
         largeImage = document.createElement("img");
         largeImage.classList.add("fullScreen");
         largeImage.src = imageSrc;
+        largeImage.alt = imageAlt;
 
         largeImageWrapper.appendChild(largeImage);
         block.parentNode.appendChild(largeImageWrapper);
