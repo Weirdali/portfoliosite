@@ -1,5 +1,6 @@
-var init,    
+var init,
     Carousel, 
+    countCats,
     calculatePortraitImageAppropriateWidth,
     calculateLandscapeImageAppropriateHeight,
     closeLargeImage,
@@ -20,7 +21,6 @@ var init,
     showDesign,
     showWebDesign,
     submitContactForm,
-    xhr,
     //coffeescript.
     superBind = function(fn, self){ 
         return function(){ 
@@ -405,7 +405,7 @@ showBalloon = function() {
 }
 
 submitContactForm = function () {
-    xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.responseType = 'text';
 
     xhr.onreadystatechange = function () {
@@ -441,3 +441,38 @@ document.getElementById('submit').addEventListener('click', function(e) {
     e.preventDefault();
     submitContactForm();
 })
+
+
+countCats = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'text';
+    xhr.onreadystatechange = function () {
+        var DONE = 4; // readyState 4 means the request is done.
+        var OK = 200; // status 200 is a successful return.
+        if (xhr.readyState === DONE) {
+            if (xhr.status === OK) {
+                // var data = xhr.responseText;
+                // var jsonResponse = JSON.parse(data);
+                // console.log(jsonResponse["Data"]);
+                console.log(xhr.response);
+                console.log(xhr.responseText); // 'This is the returned text.'
+                var obj = JSON.parse(xhr.responseText);
+                console.log(obj)
+
+            } else {
+                console.log('Error: ' + xhr.status); // An error occurred during the request.
+            }
+        }
+    };
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
+
+    xhr.open('GET', 'twitter.php?q=cats&count=15');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+
+    xhr.send();
+};
+
+countCats();
