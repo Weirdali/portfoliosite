@@ -1,27 +1,23 @@
+// All javascript variables should be initialised ar the start
 var init,    
     Carousel, 
     calculatePortraitImageAppropriateWidth,
     calculateLandscapeImageAppropriateHeight,
     closeLargeImage,
     generateClouds, 
-    hideArt,
     hideBalloon,
-    hideDesign,
-    isArtShown,
-    isDesignShown,
-    isWebDesignShown,
+    hidePortfolioElementAndShowCarousel,
+    isPortfolioElementShown,
     mainCarousel, 
     isImagePortrait,
     positionClouds, 
     routes,
-    showArt, 
     showBalloon,
     showCarousel,
-    showDesign,
-    showWebDesign,
+    showPortfolioElement,
     submitContactForm,
     xhr,
-    //coffeescript.
+    //coffeescript
     superBind = function(fn, self){ 
         return function(){ 
             return fn.apply(self, arguments); 
@@ -101,62 +97,26 @@ init = function (event) {
     //JSON format data so that a 
     routes = {
         'home': function () {
-            if (isArtShown()) {
-                hideArt();
-                showCarousel();
-            } else if (isDesignShown()) {
-                hideDesign();
-                showCarousel();
-            } else if (isWebDesignShown()) {
-                hideWebDesign();
-                showCarousel();
-            }
-            mainCarousel.moveTo(0);
-            showBalloon();
+            hidePortfolioElementAndShowCarousel(0);
         },
         'work': function () {
-            if (isArtShown()) {
-                hideArt();
-                showCarousel();
-            } else if (isDesignShown()) {
-                hideDesign();
-                showCarousel();
-            } else if (isWebDesignShown()) {
-                hideWebDesign();
-                showCarousel();
-            }   
-            mainCarousel.moveTo(1);
-            showBalloon();
+            hidePortfolioElementAndShowCarousel(1);
         },
         'contact': function () {
-            if (isArtShown()) {
-                hideArt();
-                showCarousel();
-            } else if (isDesignShown()) {
-                hideDesign();
-                showCarousel();
-            } else if (isWebDesignShown()) {
-                hideWebDesign();
-                showCarousel();
-            }
-            mainCarousel.moveTo(2);
-            showBalloon();
+            hidePortfolioElementAndShowCarousel(2);
         },
         'art': function () {
-            showArt();
-            hideBalloon();
+            showPortfolioElement("artGridWrapper", "14%");
         },
         'webDesign' : function () {
             if (window.innerWidth < 773) {
                 window.location.href = "http://alicegee.com/ctec1412/01home.xhtml";
             } else {
-                showWebDesign();
-                hideBalloon();
+                showPortfolioElement("webDesignFrame", "40px");
             }
         },
         'design': function () {
-            showDesign();
-            hideBalloon();
+            showPortfolioElement("designGridWrapper", "14%");
         }
     };
 
@@ -178,10 +138,11 @@ window.addEventListener("hashchange", function () {
 
 //The 'init' function given above is passed as an argument to the event listener 
 //for the loading of the DOM content i.e. the page
-
 document.addEventListener("DOMContentLoaded", init); 
 
-/* note: Credit this guy => http://jsfiddle.net/fZtdt/498/ */
+/* Javascript converted from Jquery given here:
+http://jsfiddle.net/fZtdt/498/ 
+*/
 generateClouds = function () {
     var i, 
         cloud, 
@@ -223,28 +184,13 @@ positionClouds = function (clouds) {
 
 /*------Art & Design/Dev-------*/
 
-showArt = function() {
+showPortfolioElement = function(element, top) {
     document.getElementById("rail").style.top="-100%";
     document.getElementById("linksBanner").style.top="0%";
     document.getElementById("linksBanner").style.width="100%";
-    document.getElementById("artGridWrapper").style.display="block";
-    document.getElementById("artGridWrapper").style.top="14%";
-}
-
-showWebDesign = function() {
-    document.getElementById("rail").style.top="-100%";
-    document.getElementById("linksBanner").style.top="0%";
-    document.getElementById("linksBanner").style.width="100%";
-    document.getElementById("webDesignFrame").style.display="block";
-    document.getElementById("webDesignFrame").style.top="40px";
-}
-
-showDesign = function() {
-    document.getElementById("rail").style.top="-100%";
-    document.getElementById("linksBanner").style.top="0%";
-    document.getElementById("linksBanner").style.width="100%";
-    document.getElementById("designGridWrapper").style.display="block";
-    document.getElementById("designGridWrapper").style.top="14%";
+    document.getElementById(element).style.display="block";
+    document.getElementById(element).style.top=top;
+    hideBalloon();
 }
 
 //Get height of screen - use 80% of it
@@ -333,46 +279,19 @@ isImagePortrait = function(largeImage) {
     return largeImage.offsetWidth < largeImage.offsetHeight;
 }
 
-isArtShown = function() {
-    return document.getElementById("artGridWrapper").style.display==="block";
+isPortfolioElementShown = function(element) {
+    return document.getElementById(element).style.display==="block";
 }
 
-isWebDesignShown = function() {
-    return document.getElementById("webDesignFrame").style.display==="block";
-}
-
-isDesignShown = function() {
-    return document.getElementById("designGridWrapper").style.display==="block";
-}
-
-hideArt = function() {
+hidePortfolioElement = function(element) {
     if (window.matchMedia("screen and (min-width: 773px)").matches) {
-        document.getElementById("artGridWrapper").style.top="100%";
-        document.getElementById("artGridWrapper").style.display="none";
+        document.getElementById(element).style.top="100%";
+        document.getElementById(element).style.display="none";
     } else {
-        document.getElementById("artGridWrapper").style.opacity="0%";
-        document.getElementById("artGridWrapper").style.display="none";
+        document.getElementById(element).style.opacity="0%";
+        document.getElementById(element).style.display="none";
     }
-}
-
-hideWebDesign = function() {
-    if (window.matchMedia("screen and (min-width: 773px)").matches) {
-        document.getElementById("webDesignFrame").style.top="100%";
-        document.getElementById("webDesignFrame").style.display="none";
-    } else {
-        document.getElementById("webDesignFrame").style.opacity="0%";
-        document.getElementById("webDesignFrame").style.display="none";
-    }
-}
-
-hideDesign = function() {
-    if (window.matchMedia("screen and (min-width: 773px)").matches) {
-        document.getElementById("designGridWrapper").style.top="100%";
-        document.getElementById("designGridWrapper").style.display="none";
-    } else {
-        document.getElementById("designGridWrapper").style.opacity="0%";
-        document.getElementById("designGridWrapper").style.display="none";
-    }
+    showCarousel();
 }
 
 showCarousel = function() {
@@ -383,6 +302,18 @@ showCarousel = function() {
     } else {
         document.getElementById("rail").style.top="12%";
     }
+}
+
+hidePortfolioElementAndShowCarousel = function(moveTo) {
+    if (isPortfolioElementShown("artGridWrapper")) {
+        hidePortfolioElement("artGridWrapper");
+    } else if (isPortfolioElementShown("designGridWrapper")) {
+        hidePortfolioElement("designGridWrapper");
+    } else if (isPortfolioElementShown("webDesignFrame")) {
+        hidePortfolioElement("webDesignFrame");
+    }
+    mainCarousel.moveTo(moveTo);
+    showBalloon();
 }
 
 /*--------Balloon---------*/
