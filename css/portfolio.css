@@ -42,21 +42,94 @@
     position: relative;
 }
 
-@media screen and (min-width: 773px) {
+@media screen and (min-width: 819px) {
+    .portfolioBannerCenter {
+        width: 82%;
+    }
+
+    .portfolioDesc {
+        font-size: 1.6em;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .portfolioOverlay {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* ff3.6+ */
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,0))); /* safari4+,chrome */
+        background:-webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* safari5.1+,chrome10+ */
+        background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* opera 11.10+ */
+        background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* ie10+ */
+        background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* w3c */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* ie6-9 */
+    }
+
+    .portfolioBtn:hover > .portfolioOverlay {
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: 0.3;
+    }
+
     .portfolioLink {
         display: inline-block;
-        width: 33%;
-        height: 130px
+        width: 31%;
+        height: 200px; 
+        margin-bottom: 0px;
+    }
+
+    .artBtn {
+        background-image: url("../img/resources/skull.jpg");
+        background-size: 100%;
+    }
+
+    .webDesignBtn {
+        background-image: url("../img/resources/crash_spyro3.jpg");
+        background-size: 100%;
+    }
+
+    .appDesignBtn {
+        background-image: url("../img/resources/cake_app.jpg");
+        background-size: 100%;
     }
 
     .portfolioBtn {
-        width: 130px;
+        width: 200px;
+        height: 100%;
+    }
+
+    .portfolioBtn p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media screen and (min-width: 1153px) {
+    .portfolioBannerCenter {
+        width: 82%;
+    }
+
+    .portfolioLink {
+        display: inline-block;
+        width: 31%;
+        height: 260px;
+    }
+
+    .portfolioBtn {
+        width: 260px;
         height: 100%;
     }
 
     .portfolioBtn p {
         top: 50%;
-        transform: translateY(-50%);
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
