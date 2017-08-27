@@ -1,0 +1,95 @@
+.ufoWrapper {
+	display: none;
+}
+
+@media screen and (min-width: 773px) {
+    .ufoWrapper { 
+        width: 160px;
+        height: 160px;
+        top: 74%;
+        left: 60%; 
+        position: absolute;
+        display: block;
+
+        -webkit-animation: float 50s linear infinite; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: float 50s linear infinite; /* Firefox < 16 */
+        -ms-animation: float 50s linear infinite; /* Internet Explorer */
+        -o-animation: float 50s linear infinite; /* Opera < 12.1 */
+        animation: float 50s linear infinite; 
+    }
+
+    .ufoFade {
+        opacity: 100%;
+        transition: all 700ms ease-in-out;
+    }
+
+
+    .ufoTop {
+        width: 42%;
+		height: 35px;
+		background-color: green;
+		border-top-left-radius: 50%;
+		border-top-right-radius: 50%;
+		border-bottom-left-radius: 30%;
+		border-bottom-right-radius: 30%;
+		z-index: 10;
+		left: 50%;
+		transform: translateX(-50%);
+		position: relative;
+    }
+
+    .ufoTopExtra {
+    	width: 42%;
+   	 	height: 23px;
+    	top: 15px;
+    	background-color: green;
+		border-top-left-radius: 50%;
+		border-top-right-radius: 50%;
+		border-bottom-left-radius: 50%;
+		border-bottom-right-radius: 50%;
+		z-index: 10;
+		left: 50%;
+		transform: translateX(-50%);
+		position: relative;
+    }
+
+    .ufoBody {
+    	width: 100%;
+	    height: 47px;
+	    background-color: grey;
+	    border-radius: 50%;
+	    top: 13px;
+	    position: relative;
+    }
+
+    .light {
+    	width: 10px;
+    	height: 10px;
+    	border-radius: 50%;
+    	background-color: yellow;
+    	position: absolute;
+    }
+
+    .light1 {
+    	top: 31px;
+    	left: 21px;
+    }
+
+    .light2 {
+    	top: 43px;
+    	left: 54px;
+    }
+
+    .light3 {
+    	top: 42px;
+    	right: 54px;
+    }
+
+    .light4 {
+    	top: 31px;
+    	right: 21px;
+    }
+
+
+    
+}
