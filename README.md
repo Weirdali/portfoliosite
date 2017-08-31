@@ -16,7 +16,7 @@ The Site
 The HTML
 --------
 
-- The site is valid HTML5 and utilises /<main>, /<section> and /<nav> tags
+- The site is valid HTML5 and utilises main, section and nav tags
 - alt tags are used on images for screen readers
 - An SVG polygon was used in the creation of the balloon
 - The carousel is structured so that each banner is held within a rail. The rail moves and the banners do not. The width of the banners are controlled by the container.
