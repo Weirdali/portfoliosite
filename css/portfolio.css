@@ -26,6 +26,10 @@
     vertical-align: middle;
 }
 
+.designLink {
+    margin-bottom: 0px
+}
+
 .portfolioBtn {
     color: #FF342F;
     background-color: white;
@@ -56,6 +60,7 @@
     .portfolioOverlay {
         width: 100%;
         height: 100%;
+        border-radius: 10%;
         background-position: center center;
         background-repeat: no-repeat;
 
@@ -72,7 +77,7 @@
         width: 100%;
         height: 100%;
         background: black;
-        opacity: 0.3;
+        opacity: 0.2;
     }
 
     .portfolioLink {
@@ -100,6 +105,7 @@
     .portfolioBtn {
         width: 200px;
         height: 100%;
+        border-radius: 10%;
     }
 
     .portfolioBtn p {
@@ -119,6 +125,7 @@
         display: inline-block;
         width: 31%;
         height: 260px;
+        font-size: 25px;
     }
 
     .portfolioBtn {
@@ -130,6 +137,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    .portfolioOverlay {
+        border-radius: 10%;
     }
 }
 
@@ -151,15 +162,44 @@
     transition: all 700ms ease-in-out;
 }
 
-.artGridCenter, .designGridCenter {
+.designExplanation {
     color: #FF342F;
-    text-align: justify;
-    text-align-last: justify;
-    width: 83%;
+    width: 83%; 
     margin: auto;
+    background-color: #82C8CF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
 
-    height: 100%;
-    
+.designExplanationCenter {
+    position: relative;
+    display: block;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.designTitle {
+    font-family: 'Pacifico';
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 3.5em;
+}
+
+.designExplanationCenter p {
+    padding-bottom: 10px;
+}
+
+.designExplanationCenter .scrollDown {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 0px;
+}
+
+.artGridCenter, .designGridCenter, .designExplanation {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     -webkit-animation-duration: 2s;
@@ -167,6 +207,16 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
+
+.artGridCenter, .designGridCenter {
+    color: #FF342F;
+    text-align: justify;
+    text-align-last: justify;
+    width: 83%;
+    margin: auto;
+    height: 100%;
+}
+
 
 .portfolioBlock {
     display: inline-block;
@@ -241,7 +291,7 @@
 }
 
 @media screen and (min-width: 1111px) {
-    .artGridCenter, .designGridCenter {
+    .artGridCenter, .designGridCenter, .designExplanation {
         width: 70%;
     }
 
