@@ -16,7 +16,7 @@ The Site
 The HTML
 --------
 
-- The site is valid HTML5 and utilises <main>, <section> and <nav> tags
+- The site is valid HTML5 and utilises /<main>, /<section> and /<nav> tags
 - alt tags are used on images for screen readers
 - An SVG polygon was used in the creation of the balloon
 - The carousel is structured so that each banner is held within a rail. The rail moves and the banners do not. The width of the banners are controlled by the container.
@@ -52,7 +52,7 @@ The JavaScript
 - There are also functions which activate animations when the URL changes
 - The contact page uses AJAX to send JSON data to contact.php, which sends the result JSON data to be displayed on the page, thus demonstrating an ability to use local JSON data.
 
-- NOTE: There is code in a separate branch named 'Twitter' for an Twitter API that pulls JSON data from a tweat search. However, the front end portion of this turned out to be nearly identical to the code to pull local JSON data, and the API did not end up being useful for the site and would disrupt the layout and feel, therefore it has been scrapped. However, the code is there to demonstrate my ability to use third party API JSON data. 
+- NOTE: There is code in a separate branch named 'Twitter' for an Twitter API that pulls JSON data from a tweet search. However, the front end portion of this turned out to be nearly identical to the code to pull local JSON data, and the API did not end up being useful for the site and would disrupt the layout and feel, therefore it has been scrapped. However, the code is there to demonstrate my ability to use third party API JSON data. 
 
 
 Inspiration and Development of Ideas
