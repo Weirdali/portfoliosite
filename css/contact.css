@@ -6,7 +6,6 @@
 
 .contactCenter {
     width: 70%;
-    height: 70%;
     margin: auto;
     position: absolute;
     top: 50%;
@@ -15,20 +14,20 @@
 }
 
 .contactTitle {
-    margin-bottom: 10px;
+    font-family: 'Pacifico';
+    font-size: 3.5em;
 }
 
 .contactForm {
     width: 100%;
-
     padding: 0;
-    margin-top: 20px;
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .contactInput {
+    font-size: 1.1em;
     width: 100%;
     border: none;
     margin-top: 1px;
@@ -49,7 +48,7 @@
 }
 
 .contactButton {
-    font-size: 14px;
+    font-size: 1.1em;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;

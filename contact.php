@@ -37,8 +37,8 @@ else {
         $emailMsg = filter_var($emailMsg, FILTER_SANITIZE_STRING);
 
 
-        //$mail = "From: $name \n Email: $email \n Message: $message";
-    //     //mail("contact@alicegee.com", "Testing", $mail);
+        $mail = "From: $name \n Email: $email \n Message: $emailMsg";
+        mail("alicegee@ymail.com", "Testing", $mail);
         $msg["name"] = $name;
         $msg["email"] = $email;
         $msg["emailMsg"] = $emailMsg;
